@@ -5,7 +5,7 @@ import './App.css';
 class App extends Component {
 
   async componentDidMount(){
-      const res = await fetch(`${process.env.REACT_APP_DOMAIN}`, {
+      const res = await fetch(`https://ea11-backend.herokuapp.com`, {
         method: 'get'
       });
 
