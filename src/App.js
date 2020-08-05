@@ -4,18 +4,19 @@ import './App.css';
 
 class App extends Component {
 
-  async componentDidMount(){
-      const res = await fetch(`https://ea11-backend.herokuapp.com`, {
-        method: 'get'
-      });
+  // async componentDidMount(){
+  //     const res = await fetch(`https://ea11-backend.herokuapp.com`, {
+  //       method: 'get'
+  //     });
 
-      const data = await res.json();
-      console.log(data);
-  }
+  //     const data = await res.json();
+  //     console.log(data);
+  // }
 
   render() {
     return (
-      <div>
+      <div className="container">
+       EA11
 
       </div>
     );
