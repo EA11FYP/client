@@ -1,0 +1,14 @@
+#solid{
+    background: #4857B0;
+    border-radius: 14px;
+    font-family: Rubik;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 30px;
+    text-align: center;
+
+    color: #FFFFFF;
+    border: none;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5));
+}

@@ -1,0 +1,18 @@
+#light{
+    background: hsl(0, 0%, 100%);
+    border: 1px solid #4857B0;
+    box-sizing: border-box;
+    border-radius: 14px;
+    font-family: Rubik;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 30px;
+
+    text-align: center;
+
+    color: #4857B0;
+    /* margin-right: 28px; */
+    
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
