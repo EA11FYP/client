@@ -24,6 +24,9 @@ class Modal extends Component {
                     }}>
                     <div id="modal-title">
                         <span id="modal-title-txt">{this.props.title}</span>
+                        <div id="modal-close-btn" onClick={this.props.modalClosed}>
+                            Close
+                        </div>
                     </div>
                     {this.props.children}
                 </div>
