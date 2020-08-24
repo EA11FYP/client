@@ -1,0 +1,49 @@
+#modal {
+    position: fixed;
+    z-index: 500;
+    background-color: white;
+    width: 80%;
+    border: 4px solid #4857B0;
+    border-radius: 32px;
+    box-shadow: 1px 1px 1px black;
+    left: 15%;
+    top: 15%;
+    box-sizing: border-box;
+    transition: all 0.3s ease-out;
+    width: 70%;
+    height: 543.35px;
+}
+
+#modal-title{
+    width: 100%;
+    height:78px;
+    background: #4857B0;
+    border-radius: 30px 30px 0 0;
+    text-align: center;
+    padding-top: 17px;
+}
+
+#modal-title-txt{
+    color: white;
+    font-family: Rubik;
+    font-style: normal;
+    text-transform: uppercase;
+    font-size: 30px;
+    line-height: 36px;
+}
+
+@media (max-width: 480px){
+    #modal{
+        height: 40%;
+    }
+
+    #modal-title{
+        height: 30px;
+        padding-top: 0px;
+    }
+
+    #modal-title-txt{
+        font-size: 14px;
+    }
+}
+

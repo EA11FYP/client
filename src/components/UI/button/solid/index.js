@@ -5,7 +5,7 @@ import './index.css';
 const index = (props) => {
     return (
         <div>
-            <button id="solid" style={{ ...props.style }}>{props.children} </button>
+            <button id="solid" onClick={props.clicked} style={{ ...props.style }}>{props.children} </button>
         </div>
     );
 };
