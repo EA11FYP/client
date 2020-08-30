@@ -11,7 +11,7 @@ import './index.css';
 class index extends Component {
     render() {
         let modalContent = null;
-        if(window.innerWidth>481){
+        if(window.innerWidth>800){
             modalContent = (
             <React.Fragment>
                 <img className="modal-mentor" src={mentorImg} alt="MENTOR" />
@@ -20,11 +20,12 @@ class index extends Component {
                     <ButtonSolid style={{width:133, height:40}}> Next </ButtonSolid>
                 </div>
             </React.Fragment>);
-        } else if(window.innerWidth<=481){
+        } else if(window.innerWidth<=799){
+            let x = "";
             modalContent = (
                 <React.Fragment>
-                    <ButtonLight style={{width:110, height:40, marginTop:"20%", marginLeft:5}}>MENTOR</ButtonLight>
-                    <ButtonLight style={{width:110, height:40, float:"right", marginTop:"20%", marginRight:5}}>MENTEE</ButtonLight>
+                    <ButtonLight style={{width:"45%", height:40, marginTop:"20%", marginLeft:5, border:`${x}`}}>MENTOR</ButtonLight>
+                    <ButtonLight style={{width:"45%", height:40, float:"right", marginTop:"20%", marginRight:5}}>MENTEE</ButtonLight>
                     <div className="modal-next-btn">
                         <ButtonSolid style={{width:65, height:35, marginTop:"15%"}}> Next </ButtonSolid>
                     </div>
