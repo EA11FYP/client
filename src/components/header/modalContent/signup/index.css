@@ -1,0 +1,13 @@
+.modal-mentor{
+    margin: 7% auto auto 11%;
+}
+
+.modal-mentee{
+    float: right;
+    margin: 7% 11% auto auto;
+}
+
+.modal-next-btn{
+    text-align: center;
+    margin-top: 2%;
+}

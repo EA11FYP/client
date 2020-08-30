@@ -3,7 +3,8 @@ import { Navbar, NavbarBrand, NavbarToggler, Nav, NavItem, Collapse} from 'react
 
 import ButtonLight from '../UI/button/light';
 import ButtonSolid from '../UI/button/solid';
-import Modal from '../UI/modal/Modal';
+import SignupModal from './modalContent/signup';
+//import Modal from '../UI/modal/Modal';
 
 import './index.css';
 
@@ -33,9 +34,10 @@ const index = (props) => {
                     </Nav>
                 </Collapse>
             </Navbar>
-            <Modal show={showModal} title="signup" modalClosed={closeModalHandler} >
+            {/* <Modal show={showModal} title="signup" modalClosed={closeModalHandler} >
                 
-            </Modal>
+            </Modal> */}
+            <SignupModal show={showModal} modalClosed={closeModalHandler}/>
         </div>
     );
 };

@@ -4,9 +4,13 @@ import './index.css';
 
 const index = (props) => {
     return (
-        <div>
-            <button id="solid" onClick={props.clicked} style={{ ...props.style }}>{props.children} </button>
-        </div>
+        <React.Fragment>
+            <button id="solid" 
+            onClick={props.clicked} 
+            style={{ ...props.style }}>
+                {props.children} 
+            </button>
+        </React.Fragment>
     );
 };
 
