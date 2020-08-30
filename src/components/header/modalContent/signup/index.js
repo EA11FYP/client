@@ -36,10 +36,21 @@ class index extends Component {
         if(window.innerWidth>800){
             modalContent = (
             <React.Fragment>
-                <img className="modal-mentor" src={mentorImg} alt="MENTOR" />
-                <img className="modal-mentee" src={menteeImg} alt="MENTEE" />
+                <img className="modal-mentor" 
+                src={mentorImg} 
+                alt="MENTOR"
+                style={{border:`${this.state.mentorBorder}`}}
+                onClick={()=>this.clickHandler(0)} />
+
+                <img 
+                className="modal-mentee" 
+                src={menteeImg} 
+                alt="MENTEE"
+                style={{border:`${this.state.menteeBorder}`}}
+                onClick={()=>this.clickHandler(1)} />
+
                 <div className="modal-next-btn">
-                    <ButtonSolid style={{width:133, height:40}}> Next </ButtonSolid>
+                    <ButtonSolid style={{width:133, height:40}} onClick={()=>this.clickHandler(2)}> Next </ButtonSolid>
                 </div>
             </React.Fragment>);
         } else if(window.innerWidth<=799){

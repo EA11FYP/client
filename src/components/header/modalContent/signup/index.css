@@ -1,13 +1,19 @@
 .modal-mentor{
     margin: 7% auto auto 11%;
+    border: 1px solid #4857B0;
+    border-radius: 34px;
+    cursor: pointer;
 }
 
 .modal-mentee{
     float: right;
     margin: 7% 11% auto auto;
+    border: 1px solid #4857B0;
+    border-radius: 34px;
+    cursor: pointer;
 }
 
 .modal-next-btn{
     text-align: center;
-    margin-top: 2%;
+    margin-top: 3%;
 }
