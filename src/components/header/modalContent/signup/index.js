@@ -88,7 +88,7 @@ class index extends Component {
         }
         return (
             <div>
-                <Modal show={this.props.show} title="signup" modalClosed={this.props.modalClosed}>
+                <Modal show={this.props.show} title="sign-up" modalClosed={this.props.modalClosed}>
                     {modalContent}
                     
                 </Modal>
