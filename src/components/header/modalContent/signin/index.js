@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 
 import Modal from '../../../UI/modal/Modal';
 import mentorImg from '../../../../assets/auth/modal/mentor.svg';
 import menteeImg from '../../../../assets/auth/modal/mentee.svg';
 import ButtonSolid from '../../../UI/button/solid';
 import ButtonLight from '../../../UI/button/light';
+import * as actions from '../../../../redux/actions';
 
 import './index.css';
 
@@ -15,7 +17,9 @@ class index extends Component {
         mentorBorder: "",
         menteeBorder: "none",
         showUserTypeWindow: true,
-        showCredentialsWindow: false
+        showCredentialsWindow: false,
+        username: "",
+        password: ""
     }
 
     clickHandler = (type) => {
@@ -35,6 +39,42 @@ class index extends Component {
             default:
                 return;
         }
+    }
+
+    inputHandler = (event,type) => {
+        switch(type){
+            case 0:
+                this.setState({username:event.target.value});
+                break;
+            case 1:
+                this.setState({password:event.target.value});
+                break;
+            default: return;
+        }
+    }
+
+    formSubmitHandler = async event => {
+        event.preventDefault();
+
+        let body = {
+            username: this.state.username,
+            password: this.state.password
+        };
+
+        const res = await fetch(`${process.env.REACT_APP_DOMAIN}/api/auth/${this.state.userType}/login`, {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'post',
+            body: JSON.stringify(body)
+        });
+
+        const data = await res.json();
+        if(data.success){
+            this.props.LoginUser(data.info);
+        }
+        console.log(data);
+
     }
 
     render() {
@@ -120,15 +160,24 @@ class index extends Component {
                 <React.Fragment>
                     <div className="signin-form-innerlayout">
                         <p className="signin-form-title">Enter Credentials</p>
-                        <form>
+                        <form onSubmit={(event)=>this.formSubmitHandler(event)}>
                             <div>
                                 <label className="signin-form-label">Username:</label><br />
-                                <input className="signin-form-input" type="text" autoFocus required />
+                                <input 
+                                className="signin-form-input" 
+                                type="text" 
+                                autoFocus 
+                                required
+                                onChange={(event)=>this.inputHandler(event,0)} />
                             </div>
 
                            <div>
                                 <label className="signin-form-label">Password:</label><br />
-                                <input className="signin-form-input" type="password" required />
+                                <input 
+                                className="signin-form-input" 
+                                type="password" 
+                                required
+                                onChange={(event)=>this.inputHandler(event,1)} />
                            </div>
 
                             {formBtn}
@@ -155,4 +204,5 @@ class index extends Component {
     }
 }
 
-export default index;
+
+export default connect(null,actions)(index);
