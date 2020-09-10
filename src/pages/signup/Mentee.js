@@ -92,7 +92,7 @@ class Mentee extends Component {
                                 width:100, 
                                 height: 45, 
                                 fontSize: 18}} > 
-                                    Sign In 
+                                    Sign Up 
                                 </ButtonSolid>
                             </div>
                         </form>
