@@ -1,7 +1,7 @@
 .signup-form-layout{
     background: #FFFFFF;
     border-radius: 30px;
-    margin: 35px 89px;
+    margin: 35px 8%;
     height: 1000px;
     padding: 16px;
 }
@@ -14,3 +14,38 @@
     line-height: 41px;
     margin-left: 50px;
 }
+
+.signup-form-inner-layout{
+    margin: auto 85px;
+}
+
+.signup-form-input{
+    background: #F5F6FA;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    height: 40px;
+    width: 100%;
+}
+
+@media (max-width: 480px){
+    .signup-form-layout{
+        margin: 35px 5%;
+    }
+
+    .signup-form-title{
+        font-size: 20px;
+        margin: auto;
+        text-align: center;
+    }
+
+    .signup-form-inner-layout{
+        margin: auto 10px;
+    }
+
+    .signup-form-input{
+        margin-bottom: 15px;
+    }
+}
+
