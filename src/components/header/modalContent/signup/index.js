@@ -50,7 +50,13 @@ class index extends Component {
                 onClick={()=>this.clickHandler(1)} />
 
                 <div className="modal-next-btn">
-                    <ButtonSolid style={{width:133, height:40}} onClick={()=>this.clickHandler(2)}> Next </ButtonSolid>
+                    <a href={`/signup/${this.state.userType}`}>
+                        <ButtonSolid 
+                            style={{width:133, height:40}} 
+                            onClick={()=>this.clickHandler(2)}>
+                                Next 
+                        </ButtonSolid>
+                    </a>
                 </div>
             </React.Fragment>);
         } else if(window.innerWidth<=799){
@@ -76,13 +82,15 @@ class index extends Component {
                         MENTEE
                     </ButtonLight>
 
-                    <a className="modal-next-btn">
-                        <ButtonSolid 
-                        style={{width:65, height:35, marginTop:"15%"}} 
-                        clicked={()=>this.clickHandler(2)}>
-                            Next 
-                        </ButtonSolid>
-                    </a>
+                    <div className="modal-next-btn">
+                        <a  href={`/signup/${this.state.userType}`}>
+                            <ButtonSolid 
+                            style={{width:65, height:35, marginTop:"15%"}} 
+                            clicked={()=>this.clickHandler(2)}>
+                                Next 
+                            </ButtonSolid>
+                        </a>
+                    </div>
                 </React.Fragment>
             )
         }
