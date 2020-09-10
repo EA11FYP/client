@@ -5,7 +5,8 @@ import './index.css';
 const index = (props) => {
     return (
         <React.Fragment>
-            <button id="solid" 
+            <button id="solid"
+            type={props.type} 
             onClick={props.clicked} 
             style={{ ...props.style }}>
                 {props.children} 

@@ -24,9 +24,10 @@
     border: 1px solid #000000;
     box-sizing: border-box;
     border-radius: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     height: 40px;
     width: 100%;
+    padding: 3px 10px;
 }
 
 @media (max-width: 480px){
