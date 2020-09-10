@@ -35,7 +35,7 @@ class index extends Component {
 
     render() {
         let modalContent = null;
-        if(window.innerWidth>800){
+        if(window.innerWidth>800 && this.state.showUserTypeWindow){
             modalContent = (
             <React.Fragment>
                 <img className="modal-mentor" 
@@ -55,7 +55,7 @@ class index extends Component {
                     <ButtonSolid style={{width:133, height:40}} onClick={()=>this.clickHandler(2)}> Next </ButtonSolid>
                 </div>
             </React.Fragment>);
-        } else if(window.innerWidth<=799){
+        } else if(window.innerWidth<=799 && this.state.showUserTypeWindow){
             //let x = "";
             modalContent = (
                 <React.Fragment>
@@ -92,7 +92,6 @@ class index extends Component {
             <div>
                 <Modal show={this.props.show} title="sign-in" modalClosed={this.props.modalClosed}>
                     {modalContent}
-                    
                 </Modal>
             </div>
         );

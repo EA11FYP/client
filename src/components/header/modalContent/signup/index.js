@@ -76,13 +76,13 @@ class index extends Component {
                         MENTEE
                     </ButtonLight>
 
-                    <div className="modal-next-btn">
+                    <a className="modal-next-btn">
                         <ButtonSolid 
                         style={{width:65, height:35, marginTop:"15%"}} 
                         clicked={()=>this.clickHandler(2)}>
                             Next 
                         </ButtonSolid>
-                    </div>
+                    </a>
                 </React.Fragment>
             )
         }
