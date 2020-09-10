@@ -2,6 +2,11 @@
     margin-right: 28px;
 }
 
+#header-avatar{
+    width: 40px;
+    background: black;
+}
+
 @media (max-width: 767px){
     #signup-btn{
         margin: 20px auto 0 auto;

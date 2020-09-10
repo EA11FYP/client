@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { Navbar, NavbarBrand, NavbarToggler, Nav, NavItem, Collapse} from 'reactstrap';
+import {connect} from 'react-redux';
 
 import ButtonLight from '../UI/button/light';
 import ButtonSolid from '../UI/button/solid';
@@ -23,6 +24,31 @@ const index = (props) => {
     const openSigninModalhandler = () => setShowSigninModal(true);
     const closeSigninModalHandler = () => setShowSigninModal(false);
 
+    let conditionalContent;
+    if(!props.auth){
+        conditionalContent = (
+            <React.Fragment>
+                <NavItem id="signup-btn">
+                    <ButtonLight clicked={openSignupModalhandler} style={{width:133, height:40}}>Sign up</ButtonLight>
+                </NavItem>
+                <NavItem id="signin-btn">
+                    <ButtonSolid clicked={openSigninModalhandler} style={{width:133, height:40}} >Sign in</ButtonSolid>
+                </NavItem>
+            </React.Fragment>
+        )
+    } else {
+        conditionalContent = (
+            <React.Fragment>
+                <NavItem>
+                    <span>{`Welcome, ${props.auth.name}`}</span>
+                </NavItem>
+                 <NavItem>
+                    <span id="header-avatar"></span>
+                </NavItem>
+            </React.Fragment>
+        )
+    }
+
     return (
         <div>
             <Navbar light expand="md" >
@@ -30,12 +56,7 @@ const index = (props) => {
                 <NavbarToggler style={{color:"#4857B0"}} onClick={toggle} />
                 <Collapse style={{textAlign:'center'}} isOpen={isOpen} navbar>
                     <Nav className="ml-auto" navbar>
-                       <NavItem id="signup-btn">
-                           <ButtonLight clicked={openSignupModalhandler} style={{width:133, height:40}}>Sign up</ButtonLight>
-                       </NavItem>
-                       <NavItem id="signin-btn">
-                           <ButtonSolid clicked={openSigninModalhandler} style={{width:133, height:40}} >Sign in</ButtonSolid>
-                       </NavItem>
+                       {conditionalContent}
                     </Nav>
                 </Collapse>
             </Navbar>
@@ -48,4 +69,8 @@ const index = (props) => {
     );
 };
 
-export default index;
+function mapStateToProps({auth}) {
+    return {auth};
+}
+
+export default connect(mapStateToProps)(index);
