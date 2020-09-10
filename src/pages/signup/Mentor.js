@@ -5,9 +5,11 @@ import './Styling.css';
 class Mentor extends Component {
     render() {
         return (
-            <div>
-                <h1>Mentor form</h1>
-            </div>
+           <React.Fragment>
+                <div className="signup-form-layout">
+                    <p className="signup-form-title">MENTOR SIGNUP</p>
+                </div>
+           </React.Fragment>
         );
     }
 }
