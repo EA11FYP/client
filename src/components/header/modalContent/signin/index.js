@@ -27,6 +27,10 @@ class index extends Component {
                 this.setState({userType:"mentee",mentorBorder:"none",menteeBorder:""});
                 break;
             case 2:
+                this.setState({showCredentialsWindow: true, showUserTypeWindow: false});
+                break;
+            case 3:
+                this.setState({showCredentialsWindow: false, showUserTypeWindow: true});
                 break;
             default:
                 return;
@@ -34,7 +38,27 @@ class index extends Component {
     }
 
     render() {
+        console.log(this.state);
         let modalContent = null;
+        let formBtn = window.innerWidth>480 ? 
+            ( <ButtonSolid type="submit" 
+            style={{background: "#289450",
+            width:100, 
+            height: 45, 
+            fontSize: 18}} > 
+                Sign In 
+        </ButtonSolid>) : 
+        (
+            <ButtonSolid type="submit" 
+            style={{background: "#289450",
+            width:80, 
+            height: 30, 
+            fontSize: 12,
+            marginTop: 10}} > 
+                Sign In 
+            </ButtonSolid> 
+        );
+
         if(window.innerWidth>800 && this.state.showUserTypeWindow){
             modalContent = (
             <React.Fragment>
@@ -52,7 +76,11 @@ class index extends Component {
                 onClick={()=>this.clickHandler(1)} />
 
                 <div className="modal-next-btn">
-                    <ButtonSolid style={{width:133, height:40}} onClick={()=>this.clickHandler(2)}> Next </ButtonSolid>
+                    <ButtonSolid 
+                    style={{width:133, height:40}} 
+                    clicked={()=>this.clickHandler(2)}> 
+                        Next 
+                    </ButtonSolid>
                 </div>
             </React.Fragment>);
         } else if(window.innerWidth<=799 && this.state.showUserTypeWindow){
@@ -87,6 +115,35 @@ class index extends Component {
                     </div>
                 </React.Fragment>
             )
+        } else if(this.state.showCredentialsWindow){
+            modalContent = (
+                <React.Fragment>
+                    <div className="signin-form-innerlayout">
+                        <p className="signin-form-title">Enter Credentials</p>
+                        <form>
+                            <div>
+                                <label className="signin-form-label">Username:</label><br />
+                                <input className="signin-form-input" type="text" autoFocus required />
+                            </div>
+
+                           <div>
+                                <label className="signin-form-label">Password:</label><br />
+                                <input className="signin-form-input" type="password" required />
+                           </div>
+
+                            {formBtn}
+
+                           <div style={{marginTop: 10}}> 
+                            <button 
+                            style={{backgroundColor: "white", border:"none", cursor: "pointer"}} 
+                            onClick={()=>this.clickHandler(3)}>
+                                Back
+                            </button>
+                            </div>
+                        </form>
+                    </div>
+                </React.Fragment>
+            );
         }
         return (
             <div>
