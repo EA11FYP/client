@@ -74,7 +74,8 @@ class index extends Component {
         if(data.success){
             this.props.LoginUser(data.info);
             this.props.history.push("/");
-            window.location.reload(true);
+            //window.location.reload(true);
+            this.props.modalClosed();
         }
         console.log(data);
 
