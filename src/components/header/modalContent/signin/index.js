@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import Modal from '../../../UI/modal/Modal';
 import mentorImg from '../../../../assets/auth/modal/mentor.svg';
@@ -72,6 +73,8 @@ class index extends Component {
         const data = await res.json();
         if(data.success){
             this.props.LoginUser(data.info);
+            this.props.history.push("/");
+            window.location.reload(true);
         }
         console.log(data);
 
@@ -205,4 +208,4 @@ class index extends Component {
 }
 
 
-export default connect(null,actions)(index);
+export default connect(null,actions)(withRouter(index));
