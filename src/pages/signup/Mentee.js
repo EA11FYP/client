@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import ButtonSolid from '../../components/UI/button/solid';
 import * as actions from '../../redux/actions';
@@ -48,8 +49,9 @@ class Mentee extends Component {
         const data = await res.json();
         if(data.success){
             this.props.LoginUser(data.info);
+            this.props.history.push("/");
         }
-        console.log(data);
+        //console.log(data);
     }
 
     render() {
@@ -102,4 +104,4 @@ class Mentee extends Component {
         );
     }
 }
-export default connect(null,actions)(Mentee);
+export default connect(null,actions)(withRouter(Mentee));
