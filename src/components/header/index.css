@@ -20,4 +20,12 @@
     #signin-btn{
         margin: 10px auto 0 auto;
     }
+
+    .header-welcome-text{
+        display: none;
+    }
+
+    .header-logout-btn{
+        margin-top: 20px;
+    }
 }
