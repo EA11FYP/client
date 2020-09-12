@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Navbar, NavbarBrand, NavbarToggler, Nav, NavItem, Collapse} from 'reactstrap';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import ButtonLight from '../UI/button/light';
 import ButtonSolid from '../UI/button/solid';
@@ -25,7 +26,11 @@ const index = (props) => {
     const openSigninModalhandler = () => setShowSigninModal(true);
     const closeSigninModalHandler = () => setShowSigninModal(false);
 
-    const logoutHandler = () => props.LogoutUser();
+    const logoutHandler = () => {
+        localStorage.clear();
+        props.LogoutUser();
+        props.history.push("/");
+    }
 
     let conditionalContent;
     if(!props.auth){
@@ -76,4 +81,4 @@ function mapStateToProps({auth}) {
     return {auth};
 }
 
-export default connect(mapStateToProps,actions)(index);
+export default connect(mapStateToProps,actions)(withRouter(index));
