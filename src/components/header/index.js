@@ -42,10 +42,10 @@ const index = (props) => {
     } else {
         conditionalContent = (
             <React.Fragment>
-                <NavItem>
-                    <span>{`Welcome, ${props.auth.name}`}</span>
+                <NavItem >
+                    <NavbarBrand className="header-welcome-text" >{`Welcome, ${props.auth.name}`}</NavbarBrand>
                 </NavItem>
-                 <NavItem>
+                 <NavItem className="header-logout-btn">
                     <ButtonSolid clicked={logoutHandler} style={{width:133, height:40}}>Logout</ButtonSolid>
                 </NavItem>
             </React.Fragment>
