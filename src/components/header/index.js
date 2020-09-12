@@ -6,6 +6,7 @@ import ButtonLight from '../UI/button/light';
 import ButtonSolid from '../UI/button/solid';
 import SignupModal from './modalContent/signup';
 import SigninModal from './modalContent/signin';
+import * as actions from '../../redux/actions';
 //import Modal from '../UI/modal/Modal';
 
 import './index.css';
@@ -23,6 +24,8 @@ const index = (props) => {
 
     const openSigninModalhandler = () => setShowSigninModal(true);
     const closeSigninModalHandler = () => setShowSigninModal(false);
+
+    const logoutHandler = () => props.LogoutUser();
 
     let conditionalContent;
     if(!props.auth){
@@ -43,7 +46,7 @@ const index = (props) => {
                     <span>{`Welcome, ${props.auth.name}`}</span>
                 </NavItem>
                  <NavItem>
-                    <span id="header-avatar"></span>
+                    <ButtonSolid clicked={logoutHandler} style={{width:133, height:40}}>Logout</ButtonSolid>
                 </NavItem>
             </React.Fragment>
         )
@@ -73,4 +76,4 @@ function mapStateToProps({auth}) {
     return {auth};
 }
 
-export default connect(mapStateToProps)(index);
+export default connect(mapStateToProps,actions)(index);
