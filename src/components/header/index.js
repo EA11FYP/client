@@ -26,7 +26,16 @@ const index = (props) => {
     const openSigninModalhandler = () => setShowSigninModal(true);
     const closeSigninModalHandler = () => setShowSigninModal(false);
 
-    const logoutHandler = () => {
+    const logoutHandler = async () => {
+        const res = await fetch(`${process.env.REACT_APP_DOMAIN}/api/auth/logout`, {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'get'
+        });
+
+        const data = await res.json();
+
         localStorage.clear();
         props.LogoutUser();
         props.history.push("/");

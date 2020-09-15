@@ -77,7 +77,7 @@ class index extends Component {
             //window.location.reload(true);
             this.props.modalClosed();
         }
-        console.log(data);
+        //console.log(data);
 
     }
 
