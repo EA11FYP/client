@@ -1,0 +1,36 @@
+.forumView-body {
+  margin: 45px 25px;
+  background: #ffffff;
+  border: 1px solid #4857b0;
+  box-sizing: border-box;
+  border-radius: 20px;
+  padding: 25px;
+}
+
+.forumView-body-title {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 57px;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+.forumView-body-description {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+
+  color: #000000;
+}
+
+.forumView-body-author {
+  font-style: italic;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 19px;
+  color: #000000;
+  text-align: right;
+  text-transform: capitalize;
+}
