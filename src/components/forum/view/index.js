@@ -21,7 +21,7 @@ const index = ({id}) => {
         if(response.status === 200 && res)
             setPostDetails(res);
     }
-    
+    console.log(postDetails,"postdetails")
     return (
         <div>
             <a href="/forum/home" style={{padding: 25}}><strong>Back</strong></a>

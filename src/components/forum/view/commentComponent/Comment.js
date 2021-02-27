@@ -68,6 +68,7 @@ const Comment = ({comments=[], id, auth, userType, fetchPost,LoginUser}) => {
                     rows="4"
                     placeholder="New Comment"
                     onChange={e => setComment(e.target.value)}
+                    required
                     value={comment}>
                         {comment}
                     </textarea> <br/>
