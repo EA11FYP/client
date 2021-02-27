@@ -9,23 +9,28 @@ const index = ({id}) => {
     
     const [ postDetails, setPostDetails ] = useState({});
 
-    useEffect(async () => {
+    useEffect( () => {
+        fetchPost();
+    }, []);
+
+    let fetchPost = async () => {
         let response = await fetch(`${process.env.REACT_APP_DOMAIN}/api/forum/one/${id}`,{
             method: 'get'
         });
         let res = await response.json();
         if(response.status === 200 && res)
             setPostDetails(res);
-    }, []);
+    }
     
     return (
         <div>
+            <a href="/forum/home" style={{padding: 25}}><strong>Back</strong></a>
             <Body title={postDetails.title}
             description={postDetails.description}
             domain={postDetails.domain}
             author={postDetails.author} />
 
-            <CommentSection comments={postDetails.comments} />
+            <CommentSection comments={postDetails.comments} id={id} fetchPost={fetchPost} />
         </div>
     );
 };

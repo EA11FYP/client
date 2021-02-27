@@ -49,6 +49,7 @@ class Mentor extends Component {
         const data = await res.json();
         if(data.success){
             this.props.LoginUser(data.info);
+            this.props.UserType("mentor");
             this.props.history.push("/");
         }
         //console.log(data);

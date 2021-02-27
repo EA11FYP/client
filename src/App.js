@@ -5,6 +5,7 @@ import Landing from './pages/Landing';
 import SignupMentor from './pages/signup/Mentor';
 import SignupMentee from './pages/signup/Mentee';
 import Header from './components/header';
+import ForumHome from './pages/forum/homepage';
 import ForumView from './pages/forum/view';
 
 import './App.css';
@@ -19,6 +20,7 @@ class App extends Component {
             <Route path="/" exact><Landing /></Route>
             <Route path="/signup/mentor" exact><SignupMentor /></Route>
             <Route path="/signup/mentee" exact><SignupMentee /></Route>
+            <Route path="/forum/home" exact><ForumHome /></Route>
             <Route path="/forum/view/:id"><ForumView /></Route>
           </Switch>
         </div>

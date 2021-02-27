@@ -49,6 +49,7 @@ class Mentee extends Component {
         const data = await res.json();
         if(data.success){
             this.props.LoginUser(data.info);
+            this.props.UserType("mentee");
             this.props.history.push("/");
         }
         //console.log(data);

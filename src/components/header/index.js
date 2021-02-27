@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Navbar, NavbarBrand, NavbarToggler, Nav, NavItem, Collapse} from 'reactstrap';
+import { Navbar, NavbarBrand, NavbarToggler, Nav, NavItem, Collapse, NavLink} from 'reactstrap';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
@@ -70,10 +70,14 @@ const index = (props) => {
         <div>
             <Navbar light expand="md" >
                 <NavbarBrand>Lorem Ipsum</NavbarBrand>
+                
                 <NavbarToggler style={{color:"#4857B0"}} onClick={toggle} />
                 <Collapse style={{textAlign:'center'}} isOpen={isOpen} navbar>
                     <Nav className="ml-auto" navbar>
-                       {conditionalContent}
+                        <NavItem>
+                            <NavLink className="header-welcome-text"><a href="/forum/home">Forum</a></NavLink>
+                         </NavItem>
+                        {conditionalContent}
                     </Nav>
                 </Collapse>
             </Navbar>

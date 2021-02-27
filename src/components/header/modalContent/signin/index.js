@@ -69,10 +69,12 @@ class index extends Component {
             method: 'post',
             body: JSON.stringify(body)
         });
+        let user = this.state.userType;
 
         const data = await res.json();
         if(data.success){
             this.props.LoginUser(data.info);
+            this.props.UserType(user);
             this.props.history.push("/");
             //window.location.reload(true);
             this.props.modalClosed();
