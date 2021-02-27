@@ -1,0 +1,78 @@
+body{
+    height:100%;
+    width:100%;
+}
+.forumHome-div1{
+    min-height:120px;
+    width: 70%;
+    /*border: 5px solid black;*/
+    /*margin-bottom: 15px;*/
+}
+.forumHome-div2{
+    width:100%;
+    min-height:100px;
+    background: #FFFFFF;
+    border: 2px solid #4857B0;
+    /*margin-bottom: 15px;*/
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+.forumHome-Comment{
+    padding-top:8px;
+    padding-left:12px;
+    font-size:1.5rem;
+    font-weight: bold;
+}
+.forumHome-div3{
+    width:96%;
+    height:30px;
+    /*border: 2px solid black;*/
+    margin:0px 2%;
+    padding: 0 2% 0 0;
+    display:flex;
+    justify-content: space-between;
+}
+.forumHome-div4{
+    display: flex; 
+    flex-direction:row ;
+    justify-content: space-around;
+    width:20%;
+}
+.forumHome-div5{
+    font-style: italic;
+    font-size: 0.8rem;
+}
+.forumHome-btnx1{
+    height:20px;
+    width:26px;
+    border:0;
+    background-color: white;
+}
+.forumHome-ldc{
+    display: flex; 
+}
+.forumHome-lyk{
+    background-image: url('./lyk.svg');
+    background-size: cover;
+}
+.forumHome-dlyk{
+    background-image: url('./dlyk.svg');
+    background-size: cover;
+}
+.forumHome-cmn{
+    background-image: url('./cmn.svg');
+    background-size: cover;
+}
+.forumHome-dwn{
+    position:relative;
+    height:26px;
+    width:26px;
+    left:50%;
+    border:0;
+    background-image: url('./DownArrow.svg');
+    background-size: cover;
+    display: flex; 
+    justify-content: center;
+    transform: translate(-13px,-13px);
+    background-color: white;
+}
