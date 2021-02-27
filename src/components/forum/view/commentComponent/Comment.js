@@ -51,8 +51,8 @@ const Comment = ({comments=[], id, auth, userType, fetchPost,LoginUser}) => {
                 comments.map(comment =>{
                     username = comment.author? comment.author.username : "";
                     return (
-                        <React.Fragment>
-                            <div className="forumView-comments-layout" key={comment._id}>
+                        <React.Fragment key={comment._id}>
+                            <div className="forumView-comments-layout" >
                                 <p className="forumView-comments-layout-name">{username}</p>
                                 <p className="forumView-comments-layout-body">{comment.body}</p>
                             </div>

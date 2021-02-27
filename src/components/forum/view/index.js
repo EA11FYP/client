@@ -28,7 +28,8 @@ const index = ({id}) => {
             <Body title={postDetails.title}
             description={postDetails.description}
             domain={postDetails.domain}
-            author={postDetails.author} />
+            author={postDetails.author}
+            date={postDetails.date} />
 
             <CommentSection comments={postDetails.comments} id={id} fetchPost={fetchPost} />
         </div>

@@ -25,12 +25,16 @@
   color: #000000;
 }
 
-.forumView-body-author {
-  font-style: italic;
+.forumView-body-author,
+.forumView-body-domain {
   font-weight: 300;
   font-size: 16px;
   line-height: 19px;
   color: #000000;
-  text-align: right;
   text-transform: capitalize;
+}
+
+.forumView-body-author {
+  font-style: italic;
+  text-align: right;
 }

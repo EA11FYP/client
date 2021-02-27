@@ -2,6 +2,7 @@ import React,{useState, useEffect} from 'react';
 
 import commentSVG from '../../../assets/forum/comment.svg';
 import downArrow from '../../../assets/forum/downArrow.svg';
+import ButtonSolid from '../../UI/button/solid/index';
 
 import './index.css';
 
@@ -28,8 +29,13 @@ const index = () => {
 
     return (
         <div style={{marginBottom:50}}>
-            {
-                forumArray.map(arr => {
+            <div style={{textAlign:"center"}}>
+                <ButtonSolid style={{width:133, height:40, marginTop:15}}>
+                    <a href="/forum/new">New Post</a>
+                </ButtonSolid>
+            </div>
+                {
+                    forumArray.map(arr => {
                     username = arr.author? arr.author.username:null;
                     return (
                         <React.Fragment>
