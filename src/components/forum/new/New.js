@@ -38,7 +38,7 @@ const New = ({auth, userType, LoginUser, history}) => {
             setTitle('');
             setDescription('');
             setDomain('');
-            history.push('/forum/home');
+            history.push(`/forum/view/${res.postInfo._id}`);
         }
     }
 

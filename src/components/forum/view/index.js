@@ -25,11 +25,14 @@ const index = ({id}) => {
     return (
         <div>
             <a href="/forum/home" style={{padding: 25}}><strong>Back</strong></a>
+
             <Body title={postDetails.title}
             description={postDetails.description}
             domain={postDetails.domain}
             author={postDetails.author}
-            date={postDetails.date} />
+            date={postDetails.date}
+            postId={id}
+            fetchPost={fetchPost} />
 
             <CommentSection comments={postDetails.comments} id={id} fetchPost={fetchPost} />
         </div>
