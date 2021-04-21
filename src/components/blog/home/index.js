@@ -34,8 +34,7 @@ const index = ({auth}) => {
         <div style={{marginBottom:50}}>
             {
                auth && <div style={{textAlign:"center"}}>
-                   {/* href="/forum/new" */}
-                <a>
+                <a href="/blog/new">
                     <ButtonSolid style={{width:133, height:40, marginTop:15}}>
                         New Blog
                     </ButtonSolid>
