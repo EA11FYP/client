@@ -9,6 +9,7 @@ import ForumHome from './pages/forum/homepage';
 import ForumView from './pages/forum/view';
 import NewForum from './pages/forum/new';
 import BlogHome from './pages/blog/homepage';
+import BlogView from './pages/blog/view';
 
 import './App.css';
 
@@ -26,6 +27,7 @@ class App extends Component {
             <Route path="/forum/view/:id"><ForumView /></Route>
             <Route path="/forum/new" exact><NewForum /></Route>
             <Route path="/blog/home" exact><BlogHome /></Route>
+            <Route path="/blog/view/:id" exact><BlogView /></Route>
           </Switch>
         </div>
       </BrowserRouter>

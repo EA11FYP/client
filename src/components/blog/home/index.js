@@ -58,7 +58,7 @@ const index = ({auth}) => {
                             </div>
                         </div>
                         <div style={{textAlign:"center"}}>
-                            <a href={`/forum/view/${arr._id}`}><img  src={downArrow} alt="down-arrow" /></a>
+                            <a href={`/blog/view/${arr._id}`}><img  src={downArrow} alt="down-arrow" /></a>
                         </div>
                     </React.Fragment>
                 ) 

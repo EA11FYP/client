@@ -1,0 +1,73 @@
+.blogView-body {
+  margin: 45px 25px;
+  background: #ffffff;
+  border: 1px solid #4857b0;
+  box-sizing: border-box;
+  border-radius: 20px;
+  padding: 25px;
+}
+
+.blogView-body-title {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 57px;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+.blogView-body-description {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+
+  color: #000000;
+}
+
+.blogView-body-author,
+.blogView-body-domain {
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 19px;
+  color: #000000;
+  text-transform: capitalize;
+}
+
+.blogView-body-author {
+  font-style: italic;
+  text-align: right;
+}
+
+.blogView-edit {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.blogView-edit-label {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 30px;
+}
+
+.blogView-edit-input {
+  background: #f5f6fa;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 10px;
+  height: 40px;
+  width: 70%;
+  margin-bottom: 20px;
+  padding: 3px 10px;
+}
+
+.blogView-edit-textarea {
+  background: #f5f6fa;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 10px;
+  width: 70%;
+  margin-bottom: 20px;
+  padding: 3px 10px;
+}
