@@ -35,7 +35,7 @@ const index = (props) => {
         });
 
         const data = await res.json();
-
+        console.log(data);
         localStorage.clear();
         props.LogoutUser();
         props.history.push("/");

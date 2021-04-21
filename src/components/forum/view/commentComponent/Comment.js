@@ -10,7 +10,7 @@ const Comment = ({comments=[], id, auth, userType, fetchPost,LoginUser}) => {
 
     let [ comment, setComment ] = useState('');
 
-    let cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)username\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+    // let cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)username\s*\=\s*([^;]*).*$)|^.*$/, "$1");
 
     let commentSubmitHandler = async event => {
         event.preventDefault();
