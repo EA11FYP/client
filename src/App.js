@@ -4,13 +4,18 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Landing from './pages/Landing';
 import SignupMentor from './pages/signup/Mentor';
 import SignupMentee from './pages/signup/Mentee';
+
 import Header from './components/header';
+
 import ForumHome from './pages/forum/homepage';
 import ForumView from './pages/forum/view';
 import NewForum from './pages/forum/new';
+
 import BlogHome from './pages/blog/homepage';
 import BlogView from './pages/blog/view';
 import NewBlog from './pages/blog/new';
+
+import MentorHome from './pages/mentor/home';
 
 import './App.css';
 
@@ -30,6 +35,7 @@ class App extends Component {
             <Route path="/blog/home" exact><BlogHome /></Route>
             <Route path="/blog/view/:id" exact><BlogView /></Route>
             <Route path="/blog/new" exact><NewBlog /></Route>
+            <Route path="/mentor/home" exact><MentorHome /></Route>
           </Switch>
         </div>
       </BrowserRouter>

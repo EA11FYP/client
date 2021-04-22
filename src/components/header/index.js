@@ -69,13 +69,16 @@ const index = (props) => {
     return (
         <div>
             <Navbar light expand="md" >
-                <NavbarBrand>Lorem Ipsum</NavbarBrand>
+                <NavbarBrand><a href="/">Lorem Ipsum</a></NavbarBrand>
                 
                 <NavbarToggler style={{color:"#4857B0"}} onClick={toggle} />
                 <Collapse style={{textAlign:'center'}} isOpen={isOpen} navbar>
                     <Nav className="ml-auto" navbar>
                         <NavItem>
                             <NavLink className="header-welcome-text"><a href="/forum/home">Forum</a></NavLink>
+                         </NavItem>
+                         <NavItem>
+                            <NavLink className="header-welcome-text"><a href="/blog/home">Blogs</a></NavLink>
                          </NavItem>
                         {conditionalContent}
                     </Nav>

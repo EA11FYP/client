@@ -12,7 +12,14 @@ class Mentor extends Component {
     state = {
         username: "",
         password: "",
-        name: ""
+        name: "",
+        age: null,
+        phone: null,
+        linkedin: "",
+        experience: null,
+        domain: "",
+        bio: "",
+        email: ""
     };
 
     inputChangeHandler = (event, type) => {
@@ -26,6 +33,27 @@ class Mentor extends Component {
             case 3:
                 this.setState({name:event.target.value});
                 break;
+            case 4:
+                this.setState({age:event.target.value});
+                break;
+            case 5:
+                this.setState({phone:event.target.value});
+                break;
+            case 6:
+                this.setState({domain:event.target.value});
+                break;
+            case 7:
+                this.setState({experience:event.target.value});
+                break;
+            case 8:
+                this.setState({linkedin:event.target.value});
+                break;
+            case 9:
+                this.setState({bio:event.target.value});
+                break;
+            case 10:
+                this.setState({email:event.target.value});
+                break;
             default: return;
         }
     }
@@ -35,7 +63,14 @@ class Mentor extends Component {
         let body = {
             username: this.state.username,
             password: this.state.password,
-            name: this.state.name
+            name: this.state.name,
+            age:this.state.age,
+            phone: this.state.phone,
+            email: this.state.email,
+            linkedin: this.state.linkedin,
+            bio: this.state.bio,
+            domain: this.state.domain,
+            experience: this.state.experience
         };
 
         const res = await fetch(`${process.env.REACT_APP_DOMAIN}/api/auth/mentor/signup`, {
@@ -47,6 +82,7 @@ class Mentor extends Component {
         });
 
         const data = await res.json();
+        console.log(data);
         if(data.success){
             this.props.LoginUser(data.info);
             this.props.UserType("mentor");
@@ -86,6 +122,72 @@ class Mentor extends Component {
                                 type="text" 
                                 required 
                                 onChange={(event)=>this.inputChangeHandler(event,3)}/>
+                            </div>
+
+                            <div>
+                                <label className="signup-form-label">Age: </label><br />
+                                <input 
+                                className="signup-form-input" 
+                                type="number" 
+                                required 
+                                onChange={(event)=>this.inputChangeHandler(event,4)}/>
+                            </div>
+
+                            <div>
+                                <label className="signup-form-label">Phone: </label><br />
+                                <input 
+                                className="signup-form-input" 
+                                type="number" 
+                                required 
+                                onChange={(event)=>this.inputChangeHandler(event,5)}/>
+                            </div>
+
+                            <div>
+                                <label className="signup-form-label">Domain: </label><br />
+                                <input 
+                                className="signup-form-input" 
+                                type="text" 
+                                required 
+                                onChange={(event)=>this.inputChangeHandler(event,6)}/>
+                            </div>
+
+                            <div>
+                                <label className="signup-form-label">Email: </label><br />
+                                <input 
+                                className="signup-form-input" 
+                                type="text" 
+                                required 
+                                onChange={(event)=>this.inputChangeHandler(event,10)}/>
+                            </div>
+
+                            <div>
+                                <label className="signup-form-label">Experience: </label><br />
+                                <input 
+                                className="signup-form-input" 
+                                type="number" 
+                                required 
+                                onChange={(event)=>this.inputChangeHandler(event,7)}/>
+                            </div>
+
+                            
+                            <div>
+                                <label className="signup-form-label">Linkedin: </label><br />
+                                <input 
+                                className="signup-form-input" 
+                                type="text" 
+                                required 
+                                onChange={(event)=>this.inputChangeHandler(event,8)}/>
+                            </div>
+
+                            <div>
+                                <label className="signup-form-label">Bio: </label><br />
+                                <textarea className="signup-form-textarea"
+                                required
+                                value={this.state.bio}
+                                rows={10}
+                                onChange={(event)=>this.inputChangeHandler(event,9)}  >
+                                    {this.state.bio}
+                                </textarea>
                             </div>
 
                             <div style={{textAlign:"center", marginTop: 25}}>
