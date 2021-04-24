@@ -33,13 +33,84 @@ const Request = ({auth}) => {
         fetchRequests();
     }, []);
 
+    let acceptRequestHandler = async (requestId, menteeId) => {
+        let body = JSON.stringify({
+            requestId,
+            menteeId,
+            mentorId:auth._id,
+            status: 'ACCEPT'
+        });
 
-    console.log(holdRequest, "hold");
-    console.log(acceptedRequest, "accept");
-    console.log(declinedRequest,"decline");
+        let response = await fetch(`${process.env.REACT_APP_DOMAIN}/api/request/action`,{
+            method:'post',
+            body,
+            headers:{
+                'Content-Type':'application/json'
+            }
+        })
+
+        // let res = await response.JSON();
+    }
+
+    let declineRequestHandler = async(requestId, menteeId) => {
+        let body = JSON.stringify({
+            requestId,
+            menteeId,
+            mentorId:auth._id,
+            status: 'DECLINE'
+        });
+
+        let response = await fetch(`${process.env.REACT_APP_DOMAIN}/api/request/action`,{
+            method:'post',
+            body,
+            headers:{
+                'Content-Type':'application/json'
+            }
+        })
+
+        // let res = await response.JSON();
+    }
+
+    // console.log(holdRequest, "hold");
+    // console.log(acceptedRequest, "accept");
+    // console.log(declinedRequest,"decline");
     return (
         <div>
-            
+            <p>HOLD</p>
+            <div>
+                {
+                    holdRequest.map(item => (
+                        <React.Fragment>
+                            <p>You have a mentorship request from {item.menteeName}</p>
+                            <button onClick={() => acceptRequestHandler(item._id,item.from)}>Accept</button>
+                            <button onClick={() => declineRequestHandler(item._id,item.from)}>Decline</button>
+                            <br />
+                        </React.Fragment>
+                    ))
+                }
+            </div>
+            <br/>
+            <p>ACCEPT</p>
+            <div>
+                {
+                    acceptedRequest.map(item => (
+                        <React.Fragment>
+                            <p>You have accepted mentorship request from {item.menteeName}</p>
+                        </React.Fragment>
+                    ))
+                }
+            </div>
+            <br/>
+            <p>DECLINED</p>
+            <div>
+                {
+                    declinedRequest.map(item => (
+                        <React.Fragment>
+                            <p>You have decline mentorship request from {item.menteeName}</p>
+                        </React.Fragment>
+                    ))
+                }
+            </div>
         </div>
     );
 };
