@@ -49,7 +49,10 @@ const Request = ({auth}) => {
             }
         })
 
-        // let res = await response.JSON();
+        let res = await response.json();
+        if(res.success){
+            fetchRequests();
+        }
     }
 
     let declineRequestHandler = async(requestId, menteeId) => {
@@ -68,7 +71,10 @@ const Request = ({auth}) => {
             }
         })
 
-        // let res = await response.JSON();
+        let res = await response.json();
+        if(res.success){
+            fetchRequests();
+        }
     }
 
     // console.log(holdRequest, "hold");
