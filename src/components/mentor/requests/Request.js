@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../../redux/actions/index';
 
+import ButtonSolid from '../../UI/button/solid';
+
 import './Request.css';
 
 const Request = ({auth}) => {
@@ -81,38 +83,42 @@ const Request = ({auth}) => {
     // console.log(acceptedRequest, "accept");
     // console.log(declinedRequest,"decline");
     return (
-        <div>
-            <p>HOLD</p>
-            <div>
+        <div className="request">
+            <div className="request-layout">
+                <p className="request-title">Requests Pending</p>
                 {
                     holdRequest.map(item => (
                         <React.Fragment>
                             <p>You have a mentorship request from {item.menteeName}</p>
-                            <button onClick={() => acceptRequestHandler(item._id,item.from)}>Accept</button>
-                            <button onClick={() => declineRequestHandler(item._id,item.from)}>Decline</button>
-                            <br />
+                            <ButtonSolid clicked={() => acceptRequestHandler(item._id,item.from)}
+                            style={{height: 35,width:80}}>
+                                Accept
+                            </ButtonSolid>
+                            <ButtonSolid clicked={() => declineRequestHandler(item._id,item.from)}
+                            style={{height: 35,width:80, backgroundColor:"#e62020", marginLeft:10}}>
+                                Decline
+                            </ButtonSolid>
+                            <p></p>
                         </React.Fragment>
                     ))
                 }
             </div>
-            <br/>
-            <p>ACCEPT</p>
-            <div>
+            <div className="request-layout">
+                <p className="request-title">Confirmed Mentorship Requests</p>
                 {
                     acceptedRequest.map(item => (
                         <React.Fragment>
-                            <p>You have accepted mentorship request from {item.menteeName}</p>
+                            <p>You have accepted mentorship request from {item.menteeName} on {item.date}</p>
                         </React.Fragment>
                     ))
                 }
             </div>
-            <br/>
-            <p>DECLINED</p>
-            <div>
+            <div className="request-layout">
+                <p className="request-title">Declined Mentorship Requests</p>
                 {
                     declinedRequest.map(item => (
                         <React.Fragment>
-                            <p>You have declined mentorship request from {item.menteeName}</p>
+                            <p>You have declined mentorship request from {item.menteeName} on {item.date}</p>
                         </React.Fragment>
                     ))
                 }
