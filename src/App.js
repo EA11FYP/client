@@ -16,7 +16,9 @@ import BlogView from './pages/blog/view';
 import NewBlog from './pages/blog/new';
 
 import MentorHome from './pages/mentor/home';
-import RequestComponent from './pages/mentor/request';
+import MentorRequests from './pages/mentor/request';
+
+import MenteeNotification from './pages/mentee/notifications';
 
 import './App.css';
 
@@ -37,7 +39,8 @@ class App extends Component {
             <Route path="/blog/view/:id" exact><BlogView /></Route>
             <Route path="/blog/new" exact><NewBlog /></Route>
             <Route path="/mentor/home" exact><MentorHome /></Route>
-            <Route path="/mentor/requests" exact><RequestComponent  /></Route>
+            <Route path="/mentor/requests" exact><MentorRequests  /></Route>
+            <Route path="/mentee/notification" exact><MenteeNotification  /></Route>
           </Switch>
         </div>
       </BrowserRouter>
