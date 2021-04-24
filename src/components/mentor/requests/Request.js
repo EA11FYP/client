@@ -112,7 +112,7 @@ const Request = ({auth}) => {
                 {
                     declinedRequest.map(item => (
                         <React.Fragment>
-                            <p>You have decline mentorship request from {item.menteeName}</p>
+                            <p>You have declined mentorship request from {item.menteeName}</p>
                         </React.Fragment>
                     ))
                 }

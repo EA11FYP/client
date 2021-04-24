@@ -81,36 +81,40 @@ const notification = ({auth}) => {
     // console.log(acceptedRequest, "accept");
     // console.log(declinedRequest,"decline");
     return (
-        <div>
-            <p>HOLD</p>
-            <div>
+        <div className="notification">
+            <div className="notification-layout">
+                <p className="notification-title">Requests Pending</p>
                 {
                     holdRequest.map(item => (
                         <React.Fragment>
-                            <p>You sent a mentorship request from {item.mentorName}</p>
+                            <p className="notification-req">
+                                You sent a mentorship request to {item.mentorName} on {item.date}
+                            </p>
                             <br />
                         </React.Fragment>
                     ))
                 }
-            </div>
-            <br/>
-            <p>ACCEPT</p>
-            <div>
+            </div>   
+            <div className="notification-layout">
+                <p className="notification-title">Confirmed Mentorship Requests</p>
                 {
                     acceptedRequest.map(item => (
                         <React.Fragment>
-                            <p>Your mentorship request was accepted by {item.mentorName}</p>
+                            <p className="notification-req">
+                                Your mentorship request was accepted by {item.mentorName} on {item.date}
+                            </p>
                         </React.Fragment>
                     ))
                 }
             </div>
-            <br/>
-            <p>DECLINED</p>
-            <div>
+            <div className="notification-layout">
+                <p className="notification-title">Declined Mentorship Requests</p>
                 {
                     declinedRequest.map(item => (
                         <React.Fragment>
-                            <p>Your mentorship request was declined by {item.mentorName}</p>
+                            <p className="notification-req">
+                                Your mentorship request was declined by {item.mentorName} on {item.date}
+                            </p>
                         </React.Fragment>
                     ))
                 }

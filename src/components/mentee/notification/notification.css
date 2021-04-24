@@ -1,0 +1,13 @@
+.notification {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.notification-layout {
+  margin-bottom: 55px;
+}
+
+.notification-title {
+  font-size: 28px;
+  font-weight: 500;
+}
