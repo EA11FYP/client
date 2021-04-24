@@ -17,6 +17,7 @@ const index = (props) => {
     const [isOpen, setIsOpen] = useState(false);
     const [showSignupModal, setShowSignupModal] = useState(false);
     const [showSigninModal, setShowSigninModal] = useState(false);
+    const [ showMentor, setShowMentor ] = useState(false);
 
     const toggle = () => setIsOpen(!isOpen);
 
@@ -66,6 +67,12 @@ const index = (props) => {
         )
     }
 
+    // if(props.auth.userType!='mentor'){
+    //     setShowMentor(true);
+    // }
+
+    // console.log(props.userType)
+
     return (
         <div>
             <Navbar light expand="md" >
@@ -80,6 +87,11 @@ const index = (props) => {
                          <NavItem>
                             <NavLink className="header-welcome-text"><a href="/blog/home">Blogs</a></NavLink>
                          </NavItem>
+                         {/* { props.userType!=='mentor' && */}
+                            <NavItem>
+                                <NavLink className="header-welcome-text"><a href="/mentor/home">Mentors</a></NavLink>
+                            </NavItem>
+                         {/* } */}
                         {conditionalContent}
                     </Nav>
                 </Collapse>
