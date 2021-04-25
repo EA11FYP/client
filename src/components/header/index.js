@@ -17,7 +17,7 @@ const index = (props) => {
     const [isOpen, setIsOpen] = useState(false);
     const [showSignupModal, setShowSignupModal] = useState(false);
     const [showSigninModal, setShowSigninModal] = useState(false);
-    const [ showMentor, setShowMentor ] = useState(false);
+    // const [ showMentor, setShowMentor ] = useState(false);
 
     const toggle = () => setIsOpen(!isOpen);
 

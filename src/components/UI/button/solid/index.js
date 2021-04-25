@@ -7,7 +7,8 @@ const index = (props) => {
         <React.Fragment>
             <button id="solid"
             type={props.type} 
-            onClick={props.clicked} 
+            onClick={props.clicked}
+            disabled={props.disabled} 
             style={{ ...props.style }}>
                 {props.children} 
             </button>

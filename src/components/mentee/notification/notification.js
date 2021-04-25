@@ -33,50 +33,6 @@ const notification = ({auth}) => {
         fetchRequests();
     }, []);
 
-    let acceptRequestHandler = async (requestId, menteeId) => {
-        let body = JSON.stringify({
-            requestId,
-            menteeId,
-            mentorId:auth._id,
-            status: 'ACCEPT'
-        });
-
-        let response = await fetch(`${process.env.REACT_APP_DOMAIN}/api/request/action`,{
-            method:'post',
-            body,
-            headers:{
-                'Content-Type':'application/json'
-            }
-        })
-
-        let res = await response.json();
-        if(res.success){
-            fetchRequests();
-        }
-    }
-
-    let declineRequestHandler = async(requestId, menteeId) => {
-        let body = JSON.stringify({
-            requestId,
-            menteeId,
-            mentorId:auth._id,
-            status: 'DECLINE'
-        });
-
-        let response = await fetch(`${process.env.REACT_APP_DOMAIN}/api/request/action`,{
-            method:'post',
-            body,
-            headers:{
-                'Content-Type':'application/json'
-            }
-        })
-
-        let res = await response.json();
-        if(res.success){
-            fetchRequests();
-        }
-    }
-
     // console.log(holdRequest, "hold");
     // console.log(acceptedRequest, "accept");
     // console.log(declinedRequest,"decline");

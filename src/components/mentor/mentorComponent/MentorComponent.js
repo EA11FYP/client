@@ -5,8 +5,14 @@ import ButtonSolid from '../../UI/button/solid/index';
 import './MentorComponent.css';
 
 const MentorComponent = ({mentorName, mentorId, menteeId, menteeName}) => {
+
+    let [ disableBtn, setDisableBtn ] = useState(false);
+    let [ btnMsg, setBtnMsg ] = useState('Request');
+
     let requestMessage = "request";
     let requestHandler = async() => {
+        setDisableBtn(true);
+        setBtnMsg('Requested')
         let body = JSON.stringify({
             mentorId,
             menteeId,
@@ -31,11 +37,12 @@ const MentorComponent = ({mentorName, mentorId, menteeId, menteeName}) => {
             <p className="mentorComponent-title">{mentorName}</p>
             <ButtonSolid type="submit" 
             clicked={requestHandler}
+            disabled={disableBtn}
             style={{background: "#289450",
             width:100, 
             height: 45, 
             fontSize: 18}} > 
-                Request  
+                {btnMsg}
             </ButtonSolid>
         </div>
     );

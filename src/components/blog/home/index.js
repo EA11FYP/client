@@ -3,7 +3,6 @@ import React,{useState, useEffect} from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../../redux/actions';
 
-import commentSVG from '../../../assets/forum/comment.svg';
 import downArrow from '../../../assets/forum/downArrow.svg';
 import ButtonSolid from '../../UI/button/solid/index';
 
