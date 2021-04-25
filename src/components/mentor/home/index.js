@@ -72,20 +72,25 @@ const index = ({auth, userType, history}) => {
     // console.log(requestList, "req");
     // console.log(filterDecline,'decline')
     // console.log(tempList,"temp")
-    // console.log(finalList,"final")
+    console.log(mentorList,"final")
     return (
-        <div>
-           <p>ALL Mentors</p>
+        <div className="mentorList">
+           <p className="mentorList-title">ALL Mentors</p>
            {   
-                <div style={{textAlign:"center"}}>
+                <div className="row mentorList-row">
                 {
                     mentorList.map(mentor => (
-                        <MentorComponent 
-                        key={mentor._id}
-                        mentorName={mentor.name} 
-                        mentorId={mentor._id} 
-                        menteeId={auth._id} 
-                        menteeName={auth.name} />
+                        <div className="col-lg-6" style={{textAlign:"center"}}>
+                            <MentorComponent 
+                            key={mentor._id}
+                            mentorName={mentor.name} 
+                            mentorId={mentor._id} 
+                            menteeId={auth._id} 
+                            menteeName={auth.name}
+                            domain={mentor.domain}
+                            experience={mentor.experience}
+                            linkedin={mentor.linkedin} />
+                        </div>
                     ))
                 }
                 </div>

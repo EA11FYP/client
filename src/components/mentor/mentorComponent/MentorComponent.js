@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 
 import ButtonSolid from '../../UI/button/solid/index';
+import ButtonLight from '../../UI/button/light/index';
 
 import './MentorComponent.css';
 
-const MentorComponent = ({mentorName, mentorId, menteeId, menteeName}) => {
+const MentorComponent = ({mentorName, mentorId, menteeId, menteeName, domain, experience, linkedin}) => {
 
     let [ disableBtn, setDisableBtn ] = useState(false);
     let [ btnMsg, setBtnMsg ] = useState('Request');
@@ -35,6 +36,10 @@ const MentorComponent = ({mentorName, mentorId, menteeId, menteeName}) => {
     return (
         <div className="mentorComponent">
             <p className="mentorComponent-title">{mentorName}</p>
+            <p><b>Domain</b>: {domain}</p>
+            <p><b>Experience</b>: {experience} years</p>
+            <p><b>LinkedIn: </b><a href={linkedin} className="mentorComponent-linkedin">{linkedin}</a></p>
+
             <ButtonSolid type="submit" 
             clicked={requestHandler}
             disabled={disableBtn}
@@ -44,6 +49,16 @@ const MentorComponent = ({mentorName, mentorId, menteeId, menteeName}) => {
             fontSize: 18}} > 
                 {btnMsg}
             </ButtonSolid>
+           <a hef="#">
+                <ButtonLight 
+                style={{
+                width:135, 
+                height: 45, 
+                fontSize: 18,
+                marginLeft:10}}>
+                    View Profile
+                </ButtonLight>
+           </a>
         </div>
     );
 };

@@ -1,0 +1,10 @@
+.mentorList {
+  margin-top: 25px;
+}
+
+.mentorList-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 500;
+  text-transform: uppercase;
+}

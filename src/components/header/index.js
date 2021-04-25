@@ -17,7 +17,6 @@ const index = (props) => {
     const [isOpen, setIsOpen] = useState(false);
     const [showSignupModal, setShowSignupModal] = useState(false);
     const [showSigninModal, setShowSigninModal] = useState(false);
-    const [ showMentor, setShowMentor ] = useState(false);
 
     const toggle = () => setIsOpen(!isOpen);
 
@@ -36,10 +35,12 @@ const index = (props) => {
         });
 
         const data = await res.json();
-        console.log(data);
-        localStorage.clear();
-        props.LogoutUser();
-        props.history.push("/");
+        if(data){
+            props.LogoutUser();
+            props.history.push("/");
+            localStorage.clear();
+        }
+        
     }
 
     let conditionalContent;
@@ -67,12 +68,6 @@ const index = (props) => {
         )
     }
 
-    // if(props.auth.userType!='mentor'){
-    //     setShowMentor(true);
-    // }
-
-    console.log(props.userType,"heello")
-
     return (
         <div>
             <Navbar light expand="md" >
@@ -88,8 +83,19 @@ const index = (props) => {
                             <NavLink className="header-welcome-text"><a href="/blog/home">Blogs</a></NavLink>
                          </NavItem>
                          { props.userType==='mentee' && 
+                            <React.Fragment>
+                                <NavItem>
+                                    <NavLink className="header-welcome-text"><a href="/mentor/home">Mentors</a></NavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <NavLink className="header-welcome-text"><a href="/mentee/notification">Notifications</a></NavLink>
+                                </NavItem>
+                            </React.Fragment>
+                        } 
+                        {
+                            props.userType!=='mentee' &&
                             <NavItem>
-                                <NavLink className="header-welcome-text"><a href="/mentor/home">Mentors</a></NavLink>
+                                <NavLink className="header-welcome-text"><a href="/mentor/requests">Requests</a></NavLink>
                             </NavItem>
                         }
                         {conditionalContent}
