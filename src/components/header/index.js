@@ -17,7 +17,7 @@ const index = (props) => {
     const [isOpen, setIsOpen] = useState(false);
     const [showSignupModal, setShowSignupModal] = useState(false);
     const [showSigninModal, setShowSigninModal] = useState(false);
-    // const [ showMentor, setShowMentor ] = useState(false);
+    const [ showMentor, setShowMentor ] = useState(false);
 
     const toggle = () => setIsOpen(!isOpen);
 
@@ -71,7 +71,7 @@ const index = (props) => {
     //     setShowMentor(true);
     // }
 
-    // console.log(props.userType)
+    console.log(props.userType,"heello")
 
     return (
         <div>
@@ -87,11 +87,11 @@ const index = (props) => {
                          <NavItem>
                             <NavLink className="header-welcome-text"><a href="/blog/home">Blogs</a></NavLink>
                          </NavItem>
-                         {/* { props.userType!=='mentor' && */}
+                         { props.userType==='mentee' && 
                             <NavItem>
                                 <NavLink className="header-welcome-text"><a href="/mentor/home">Mentors</a></NavLink>
                             </NavItem>
-                         {/* } */}
+                        }
                         {conditionalContent}
                     </Nav>
                 </Collapse>
@@ -105,8 +105,8 @@ const index = (props) => {
     );
 };
 
-function mapStateToProps({auth}) {
-    return {auth};
+function mapStateToProps({auth, userType}) {
+    return {auth,userType};
 }
 
 export default connect(mapStateToProps,actions)(withRouter(index));
