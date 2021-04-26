@@ -56,7 +56,7 @@ const MentorComponent = ({mentorName, mentorId, menteeId, menteeName, domain, ex
                 height: 45, 
                 fontSize: 18,
                 marginLeft:10}}>
-                    View Profile
+                    <a href={`/mentor/view-profile/${mentorId}`}>View Profile</a>
                 </ButtonLight>
            </a>
         </div>

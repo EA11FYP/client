@@ -17,6 +17,7 @@ import NewBlog from './pages/blog/new';
 
 import MentorHome from './pages/mentor/home';
 import MentorRequests from './pages/mentor/request';
+import MentorProfile from './pages/mentor/profile';
 
 import MenteeNotification from './pages/mentee/notifications';
 
@@ -40,6 +41,7 @@ class App extends Component {
             <Route path="/blog/new" exact><NewBlog /></Route>
             <Route path="/mentor/home" exact><MentorHome /></Route>
             <Route path="/mentor/requests" exact><MentorRequests  /></Route>
+            <Route path="/mentor/view-profile/:id" exact><MentorProfile /></Route>
             <Route path="/mentee/notification" exact><MenteeNotification  /></Route>
           </Switch>
         </div>

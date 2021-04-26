@@ -11,6 +11,10 @@
   margin-right: auto;
 }
 
+.mentorComponent-linkedin {
+  color: blue;
+}
+
 .mentorComponent-linkedin:hover {
   color: blue;
   text-decoration: underline;

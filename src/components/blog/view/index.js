@@ -11,7 +11,7 @@ import './index.css';
 
 const index = ({id,auth,history}) => {
 
-    const [ blogDetails, setBlogDetails ] = useState({});
+    let [ blogDetails, setBlogDetails ] = useState({});
     let [ showBtn, setShowBtn ] = useState(false);
     let [ showModal, setShowModal ] = useState(false);
     let [ updatedTitle, setUpdatedTitle ] = useState(blogDetails.title);
