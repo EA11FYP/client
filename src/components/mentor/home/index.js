@@ -27,7 +27,7 @@ const index = ({auth, userType, history}) => {
     }
 
     useState(() => {
-        if(userType !== 'mentee'){
+        if(userType === 'mentor'){
             history.push('/');
         }
     },[]);
@@ -85,8 +85,6 @@ const index = ({auth, userType, history}) => {
                             key={mentor._id}
                             mentorName={mentor.name} 
                             mentorId={mentor._id} 
-                            menteeId={auth._id} 
-                            menteeName={auth.name}
                             domain={mentor.domain}
                             experience={mentor.experience}
                             linkedin={mentor.linkedin} />

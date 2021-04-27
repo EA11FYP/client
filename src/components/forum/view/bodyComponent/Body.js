@@ -22,11 +22,11 @@ const Body = ({title, description, domain, author, date, auth, postId, history, 
 
 
     useEffect(() => {
-        if(ids === auth._id) 
-        setShowBtn(true)
-    else
+        if(auth && ids === auth._id) 
+            setShowBtn(true)
+        else
         setShowBtn(false);
-     console.log(ids,auth._id)
+    //  console.log(ids,auth._id)
     },[ids]);
 
     useEffect(() => {

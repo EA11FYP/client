@@ -8,7 +8,7 @@ import ButtonSolid from '../../UI/button/solid/index';
 
 import './index.css';
 
-const index = ({auth}) => {
+const index = ({auth, userType}) => {
 
     let [ blogArray, setBlogArray ] = useState([]);
 
@@ -32,7 +32,7 @@ const index = ({auth}) => {
     return (
         <div style={{marginBottom:50}}>
             {
-               auth && <div style={{textAlign:"center"}}>
+               userType==='mentor' && <div style={{textAlign:"center"}}>
                 <a href="/blog/new">
                     <ButtonSolid style={{width:133, height:40, marginTop:15}}>
                         New Blog
@@ -68,8 +68,8 @@ const index = ({auth}) => {
 };
 
 
-function mapStateToProps({auth}) {
-    return {auth};
+function mapStateToProps({auth, userType}) {
+    return {auth, userType};
 }
 
 export default connect(mapStateToProps,actions)(index);

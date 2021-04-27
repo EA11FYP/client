@@ -62,7 +62,7 @@ const Comment = ({comments=[], id, auth, userType, fetchPost,LoginUser}) => {
             }
                 
             {/* new com */}
-            <div className="forumView-comments-layout">
+         { auth &&  <div className="forumView-comments-layout">
                 <form onSubmit={commentSubmitHandler}>
                     <textarea className="forumView-comments-input"
                     rows="4"
@@ -83,7 +83,7 @@ const Comment = ({comments=[], id, auth, userType, fetchPost,LoginUser}) => {
                         </ButtonSolid>
                     </div>
                 </form>
-            </div>
+            </div>}
         </div>
     );
 };

@@ -99,6 +99,8 @@ const Request = ({auth}) => {
                                 Decline
                             </ButtonSolid>
                             <p></p>
+                            <p className="request-message">{item.requestMessage}</p>
+                            <hr/>
                         </React.Fragment>
                     ))
                 }

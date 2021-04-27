@@ -68,6 +68,7 @@ const index = (props) => {
         )
     }
 
+
     return (
         <div>
             <Navbar light expand="md" >
@@ -82,18 +83,19 @@ const index = (props) => {
                          <NavItem>
                             <NavLink className="header-welcome-text"><a href="/blog/home">Blogs</a></NavLink>
                          </NavItem>
-                         { props.userType==='mentee' && 
-                            <React.Fragment>
+                        {props.userType!=='mentor' &&
+                            
                                 <NavItem>
                                     <NavLink className="header-welcome-text"><a href="/mentor/home">Mentors</a></NavLink>
                                 </NavItem>
-                                <NavItem>
-                                    <NavLink className="header-welcome-text"><a href="/mentee/notification">Notifications</a></NavLink>
-                                </NavItem>
-                            </React.Fragment>
-                        } 
+                        }
+                        {   props.userType==='mentee' &&
+                            <NavItem>
+                                <NavLink className="header-welcome-text"><a href="/mentee/notification">Notifications</a></NavLink>
+                            </NavItem>
+                        }
                         {
-                            props.userType!=='mentee' &&
+                            props.userType==='mentor' &&
                             <NavItem>
                                 <NavLink className="header-welcome-text"><a href="/mentor/requests">Requests</a></NavLink>
                             </NavItem>

@@ -10,12 +10,13 @@ const Profile = ({auth, userType, mentorId}) => {
 
     let [ mentorDetails, setMentorDetails ] = useState({});
     let [ disableBtn, setDisableBtn ] = useState(false);
-    let [ btnMsg, setBtnMsg ] = useState('Request');
+    let [requestMessage, setRequestMessage ] = useState('');
+    let [ btnMsg, setBtnMsg ] = useState('Send');
 
-    let requestMessage = "request";
+    // let requestMessage = "request";
     let requestHandler = async() => {
         setDisableBtn(true);
-        setBtnMsg('Requested')
+        setBtnMsg('Sent')
         let body = JSON.stringify({
             menteeId: auth._id,
             mentorId,
@@ -115,17 +116,27 @@ const Profile = ({auth, userType, mentorId}) => {
                     </tr>
                 </table>
             </div>
-            {   auth && userType === 'mentee' &&
-                 <ButtonSolid type="submit" 
-                 clicked={requestHandler}
-                 disabled={disableBtn}
-                 style={{background: "#289450",
-                 width:100, 
-                 height: 45, 
-                 fontSize: 18}} > 
-                     {btnMsg}
-                 </ButtonSolid>
-            }
+         {auth && userType === 'mentee' &&
+            <div style={{textAlign:"center",marginTop:15}}> 
+                <textarea className="mentorProfile-textarea"
+                rows={5}
+                placeholder="Write a message"
+                value={requestMessage}
+                onChange={e => setRequestMessage(e.target.value)}>
+                    {requestMessage}
+                </textarea>
+
+                <ButtonSolid type="submit" 
+                clicked={requestHandler}
+                disabled={disableBtn}
+                style={{background: "#289450",
+                width:100, 
+                height: 45, 
+                fontSize: 18}} > 
+                    {btnMsg}
+                </ButtonSolid>
+            </div>
+        }
         </div>
     );
 };
