@@ -185,6 +185,7 @@ class Mentor extends Component {
                                 required
                                 value={this.state.bio}
                                 rows={10}
+                                style={{whiteSpace:"pre-wrap"}}
                                 onChange={(event)=>this.inputChangeHandler(event,9)}  >
                                     {this.state.bio}
                                 </textarea>
