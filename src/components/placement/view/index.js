@@ -60,7 +60,8 @@ const index = ({id,auth,history}) => {
         let body = JSON.stringify({
             title: updatedTitle,
             description: updatedBody,
-            domain: updatedDomain
+            domain: updatedDomain,
+            ctc:updatedCtc
         });
 
         let response = await fetch(`${process.env.REACT_APP_DOMAIN}/api/placement/edit/${id}`,{
@@ -109,6 +110,7 @@ const index = ({id,auth,history}) => {
                     <label className="forumView-edit-label">CTC</label> <br/>
                     <input className="forumView-edit-input"
                     required
+                    type="number"
                     value={updatedCtc}
                     onChange={(e) => setUpdatedCtc(e.target.value)} /> <br/>
 {/* 
