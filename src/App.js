@@ -21,6 +21,10 @@ import MentorProfile from './pages/mentor/profile';
 
 import MenteeNotification from './pages/mentee/notifications';
 
+import PlacementHome from './pages/placement/homepage';
+import PlacementView from './pages/placement/view';
+import NewPlacement from './pages/placement/new';
+
 import './App.css';
 
 class App extends Component {
@@ -43,6 +47,9 @@ class App extends Component {
             <Route path="/mentor/requests" exact><MentorRequests  /></Route>
             <Route path="/mentor/view-profile/:id" exact><MentorProfile /></Route>
             <Route path="/mentee/notification" exact><MenteeNotification  /></Route>
+            <Route path="/placement/home" exact><PlacementHome /></Route>
+            <Route path="/placement/view/:id" exact><PlacementView /></Route>
+            <Route path="/placement/new" exact><NewPlacement /></Route>
           </Switch>
         </div>
       </BrowserRouter>

@@ -1,0 +1,31 @@
+.placementHome-layout {
+  background: #ffffff;
+  border: 1px solid #4857b0;
+  box-sizing: border-box;
+  border-radius: 20px;
+  margin: 45px 25px 0 25px;
+  padding: 25px;
+}
+
+.placementHome-layout-title {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 57px;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+.placementHome-layout-domain,
+.placementHome-layout-author {
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 19px;
+  color: #000000;
+  text-transform: capitalize;
+}
+
+.placementHome-layout-author {
+  font-style: italic;
+  text-align: right;
+}
