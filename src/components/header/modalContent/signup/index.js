@@ -13,7 +13,7 @@ class index extends Component {
     state = {
         userType: "mentor",
         mentorBorder: "",
-        menteeBorder: "none"
+        menteeBorder: "none",
     }
 
     clickHandler = (type) => {

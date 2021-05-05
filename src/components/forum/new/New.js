@@ -4,6 +4,7 @@ import * as actions from '../../../redux/actions/index';
 import { withRouter } from 'react-router-dom';
 
 import ButtonSolid from '../../UI/button/solid/index';
+import Loader from '../../UI/loader/Loader';
 
 import './New.css';
 
@@ -12,9 +13,12 @@ const New = ({auth, userType, LoginUser, history}) => {
     let [ title, setTitle ] = useState('');
     let [ domain, setDomain ] = useState('');
     let [ description, setDescription ] = useState('');
+    let [ isLoading, setIsLoading ] = useState(false);
+    let [ message, setMessage ] = useState();
 
     let forumPostHandler = async event => {
         event.preventDefault();
+        setIsLoading(true);
         let body = JSON.stringify({
             authorId: auth._id,
             authorName: auth.name,
@@ -31,8 +35,10 @@ const New = ({auth, userType, LoginUser, history}) => {
             },
             body
         });
-
+        
         let res = await response.json();
+        setMessage(res.message);
+        setIsLoading(false);
         if(res.success){
             LoginUser(res.userInfo);
             setTitle('');
@@ -41,6 +47,8 @@ const New = ({auth, userType, LoginUser, history}) => {
             history.push(`/forum/view/${res.postInfo._id}`);
         }
     }
+
+    let btnContent = isLoading? <Loader />: "Submit";
 
     return (
         <div className="forumNew">
@@ -80,9 +88,10 @@ const New = ({auth, userType, LoginUser, history}) => {
                         width:100, 
                         height: 45, 
                         fontSize: 18}} > 
-                            Submit
+                            {btnContent}
                         </ButtonSolid>
                     </div>
+                    <p className="apiMessage">{message}</p>
                 </form>
             </div>
         </div>

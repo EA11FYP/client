@@ -7,6 +7,7 @@ import mentorImg from '../../../../assets/auth/modal/mentor.svg';
 import menteeImg from '../../../../assets/auth/modal/mentee.svg';
 import ButtonSolid from '../../../UI/button/solid';
 import ButtonLight from '../../../UI/button/light';
+import Loader from '../../../UI/loader/Loader';
 import * as actions from '../../../../redux/actions';
 
 import './index.css';
@@ -20,7 +21,9 @@ class index extends Component {
         showUserTypeWindow: true,
         showCredentialsWindow: false,
         username: "",
-        password: ""
+        password: "",
+        isLoading: false,
+        message: ""
     }
 
     clickHandler = (type) => {
@@ -33,9 +36,11 @@ class index extends Component {
                 break;
             case 2:
                 this.setState({showCredentialsWindow: true, showUserTypeWindow: false});
+                this.setState({message:""});
                 break;
             case 3:
                 this.setState({showCredentialsWindow: false, showUserTypeWindow: true});
+                this.setState({message:""});
                 break;
             default:
                 return;
@@ -56,7 +61,7 @@ class index extends Component {
 
     formSubmitHandler = async event => {
         event.preventDefault();
-
+        this.setState({isLoading:true});
         let body = {
             username: this.state.username,
             password: this.state.password
@@ -70,8 +75,9 @@ class index extends Component {
             body: JSON.stringify(body)
         });
         let user = this.state.userType;
-
+        this.setState({isLoading:false});
         const data = await res.json();
+        this.setState({message: data.message});
         if(data.success){
             this.props.LoginUser(data.info);
             this.props.UserType(user);
@@ -84,7 +90,8 @@ class index extends Component {
     }
 
     render() {
-        console.log(this.state);
+        // console.log(this.state);
+        let btnContent = this.state.isLoading? <Loader />: "Sign In" ;
         let modalContent = null;
         let formBtn = window.innerWidth>480 ? 
             ( <ButtonSolid type="submit" 
@@ -92,7 +99,7 @@ class index extends Component {
             width:100, 
             height: 45, 
             fontSize: 18}} > 
-                Sign In 
+                {btnContent} 
         </ButtonSolid>) : 
         (
             <ButtonSolid type="submit" 
@@ -101,7 +108,7 @@ class index extends Component {
             height: 30, 
             fontSize: 12,
             marginTop: 10}} > 
-                Sign In 
+                {btnContent}
             </ButtonSolid> 
         );
 
@@ -187,6 +194,7 @@ class index extends Component {
                            </div>
 
                             {formBtn}
+                            
 
                            <div style={{marginTop: 10}}> 
                             <button 
@@ -194,6 +202,7 @@ class index extends Component {
                             onClick={()=>this.clickHandler(3)}>
                                 Back
                             </button>
+                            <p className="apiMessage">{this.state.message}</p>
                             </div>
                         </form>
                     </div>

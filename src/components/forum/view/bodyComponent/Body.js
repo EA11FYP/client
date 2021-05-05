@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom';
 
 import Modal from '../../../UI/modal/Modal';
 import ButtonSolid from '../../../UI/button/solid/index';
+import Loader from '../../../UI/loader/Loader';
 
 import './Body.css';
 
@@ -16,6 +17,8 @@ const Body = ({title, description, domain, author, date, auth, postId, history, 
     let [ updatedTitle, setUpdatedTitle ] = useState(title);
     let [ updatedDescription, setUpdatedDescription ] = useState(description);
     let [ updatedDomain, setUpdatedDomain ] = useState(domain);
+    let [ isLoading, setIsLoading ] = useState(false);
+    let [ message, setMessage ] = useState();
 
     let username = author ? author.username:null;
     let ids = author? author.id:"123";
@@ -37,11 +40,14 @@ const Body = ({title, description, domain, author, date, auth, postId, history, 
     
     let deletePostHandler = async (event) => {
         event.preventDefault();
+        setIsLoading(true);
         let response = await fetch(`${process.env.REACT_APP_DOMAIN}/api/forum/delete/${postId}`,{
             method:"delete"
         });
 
         let res = await response.json();
+        setIsLoading(false);
+        setMessage(res.message);
         if(res.success){
             history.push('/forum/home');
         }
@@ -70,6 +76,8 @@ const Body = ({title, description, domain, author, date, auth, postId, history, 
             setShowModal(false);
         }
     }
+
+    let btnContent = isLoading? <Loader />: "Delete";
 
     let modalContent = (
         <React.Fragment>
@@ -131,10 +139,13 @@ const Body = ({title, description, domain, author, date, auth, postId, history, 
                         fontSize: 14,
                         marginLeft:10}}
                         clicked={deletePostHandler} > 
-                            Delete
+                            {btnContent}
                     </ButtonSolid>
+                    <p className="apiMessage">{message}</p>
                 </div>
+                
                )
+               
            }
 
            <Modal title="Edit Post"

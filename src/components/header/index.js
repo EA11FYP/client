@@ -7,6 +7,7 @@ import ButtonLight from '../UI/button/light';
 import ButtonSolid from '../UI/button/solid';
 import SignupModal from './modalContent/signup';
 import SigninModal from './modalContent/signin';
+import Loader from '../UI/loader/Loader';
 import * as actions from '../../redux/actions';
 //import Modal from '../UI/modal/Modal';
 
@@ -17,6 +18,7 @@ const index = (props) => {
     const [isOpen, setIsOpen] = useState(false);
     const [showSignupModal, setShowSignupModal] = useState(false);
     const [showSigninModal, setShowSigninModal] = useState(false);
+    let [ isLoading, setIsLoading ] = useState(false);
 
     const toggle = () => setIsOpen(!isOpen);
 
@@ -27,6 +29,7 @@ const index = (props) => {
     const closeSigninModalHandler = () => setShowSigninModal(false);
 
     const logoutHandler = async () => {
+        setIsLoading(true);
         const res = await fetch(`${process.env.REACT_APP_DOMAIN}/api/auth/logout`, {
             headers: {
                 'Content-Type': 'application/json'
@@ -35,6 +38,7 @@ const index = (props) => {
         });
 
         const data = await res.json();
+        setIsLoading(false);
         if(data){
             props.LogoutUser();
             props.history.push("/");
@@ -42,7 +46,7 @@ const index = (props) => {
         }
         
     }
-
+    let logoutBtnContent = isLoading ? <Loader /> : 'Logout';
     let conditionalContent;
     if(!props.auth){
         conditionalContent = (
@@ -62,7 +66,7 @@ const index = (props) => {
                     <NavbarBrand className="header-welcome-text" >Welcome <a href={`/mentor/view-profile/${props.auth._id}`}>{props.auth.name}</a></NavbarBrand>
                 </NavItem>
                  <NavItem className="header-logout-btn">
-                    <ButtonSolid clicked={logoutHandler} style={{width:133, height:40}}>Logout</ButtonSolid>
+                    <ButtonSolid clicked={logoutHandler} style={{width:133, height:40}}>{logoutBtnContent}</ButtonSolid>
                 </NavItem>
             </React.Fragment>
         )

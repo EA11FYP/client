@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../../redux/actions/index';
 
 import ButtonSolid from '../../UI/button/solid/index';
+import Loader from '../../UI/loader/Loader';
 
 import './Profile.css';
 
@@ -10,12 +11,15 @@ const Profile = ({auth, userType, mentorId}) => {
 
     let [ mentorDetails, setMentorDetails ] = useState({});
     let [ disableBtn, setDisableBtn ] = useState(false);
-    let [requestMessage, setRequestMessage ] = useState('');
+    let [ requestMessage, setRequestMessage ] = useState('');
     let [ btnMsg, setBtnMsg ] = useState('Send');
+    let [ isLoading, setIsLoading ] = useState(false);
+    let [ message, setMessage ] = useState();
 
     // let requestMessage = "request";
     let requestHandler = async() => {
         setDisableBtn(true);
+        setIsLoading(true);
         setBtnMsg('Sent')
         let body = JSON.stringify({
             menteeId: auth._id,
@@ -33,7 +37,13 @@ const Profile = ({auth, userType, mentorId}) => {
         })
 
         let res = await response.json();
-        console.log(res);
+        setIsLoading(false);
+        if(res.success){
+            setMessage('Sent Successfully, check notifications for update');
+        } else {
+            setMessage(res.message);
+        }
+        // console.log(res);
     }
 
 
@@ -52,6 +62,8 @@ const Profile = ({auth, userType, mentorId}) => {
     useEffect(() => {
         fetchMentorDetails();
     },[]);
+
+    let btnContent = isLoading? <Loader /> : btnMsg;
 
     return (
         <div className="mentorProfile">
@@ -117,25 +129,28 @@ const Profile = ({auth, userType, mentorId}) => {
                 </table>
             </div>
          {auth && userType === 'mentee' &&
-            <div style={{textAlign:"center",marginTop:15}}> 
-                <textarea className="mentorProfile-textarea"
-                rows={5}
-                placeholder="Write a message"
-                value={requestMessage}
-                onChange={e => setRequestMessage(e.target.value)}>
-                    {requestMessage}
-                </textarea>
-
-                <ButtonSolid type="submit" 
-                clicked={requestHandler}
-                disabled={disableBtn}
-                style={{background: "#289450",
-                width:100, 
-                height: 45, 
-                fontSize: 18}} > 
-                    {btnMsg}
-                </ButtonSolid>
-            </div>
+          <React.Fragment>
+                <div style={{textAlign:"center",marginTop:15}}> 
+                    <textarea className="mentorProfile-textarea"
+                    rows={5}
+                    placeholder="Write a message"
+                    value={requestMessage}
+                    onChange={e => setRequestMessage(e.target.value)}>
+                        {requestMessage}
+                    </textarea>
+    
+                    <ButtonSolid type="submit" 
+                    clicked={requestHandler}
+                    disabled={disableBtn}
+                    style={{background: "#289450",
+                    width:100, 
+                    height: 45, 
+                    fontSize: 18}} > 
+                        {btnContent}
+                    </ButtonSolid>
+                </div>
+                <p style={{fontSize:16,textTransform:"capitalize",fontWeight:400}}>{message}</p>
+          </React.Fragment>
         }
         </div>
     );

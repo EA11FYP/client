@@ -4,6 +4,7 @@ import * as actions from '../../../redux/actions/index';
 import { withRouter } from 'react-router-dom';
 
 import ButtonSolid from '../../UI/button/solid/index';
+import Loader from '../../UI/loader/Loader';
 
 import './index.css';
 
@@ -14,6 +15,8 @@ const index = ({auth, userType, LoginUser, history}) => {
     let [ type, setType ] = useState('');
     let [ location, setLocation ] = useState('');
     let [ body, setBody ] = useState('');
+    let [ isLoading, setIsLoading ] = useState(false);
+    let [ message, setMessage ] = useState();
 
     useEffect(() => {
         if(userType !== 'mentee'){
@@ -23,6 +26,7 @@ const index = ({auth, userType, LoginUser, history}) => {
 
     let placementPostHandler = async event => {
         event.preventDefault();
+        setIsLoading(true);
         let placementPostBody = JSON.stringify({
             authorId: auth._id,
             authorName: auth.name,
@@ -44,7 +48,9 @@ const index = ({auth, userType, LoginUser, history}) => {
         });
 
         let res = await response.json();
-        console.log(res)
+        setIsLoading(false);
+        setMessage(res.message);
+        // console.log(res)
         if(res.success){
             LoginUser(res.userInfo);
             setTitle('');
@@ -56,6 +62,7 @@ const index = ({auth, userType, LoginUser, history}) => {
             history.push(`/placement/view/${res.postInfo._id}`);
         }
     }
+    let btnContent = isLoading? <Loader />: "Submit";
 
     return (
         <div className="placementNew">
@@ -123,9 +130,10 @@ const index = ({auth, userType, LoginUser, history}) => {
                         width:100, 
                         height: 45, 
                         fontSize: 18}} > 
-                            Submit
+                            {btnContent}
                         </ButtonSolid>
                     </div>
+                    <p className="apiMessage">{message}</p>
                 </form>
             </div>
         </div>

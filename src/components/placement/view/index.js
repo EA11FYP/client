@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom';
 
 import Modal from '../../UI/modal/Modal';
 import ButtonSolid from '../../UI/button/solid';
+import Loader from '../../UI/loader/Loader';
 
 import './index.css';
 
@@ -18,6 +19,8 @@ const index = ({id,auth,history}) => {
     let [ updatedBody, setUpdatedBody ] = useState(placementDetails.description);
     let [ updatedDomain, setUpdatedDomain ] = useState(placementDetails.domain);
     let [ updatedCtc, setUpdatedCtc ] = useState(placementDetails.ctc);
+    let [ isLoading, setIsLoading ] = useState(false);
+    let [ message, setMessage ] = useState();
     // let [ updatedType, setUpdatedType ] = useState(placementDetails.type);
     // let [ updatedLocation, setUpdatedLocation ] = useState(placementDetails.location);
 
@@ -81,15 +84,20 @@ const index = ({id,auth,history}) => {
 
     let deletePostHandler = async (event) => {
         event.preventDefault();
+        setIsLoading(true);
         let response = await fetch(`${process.env.REACT_APP_DOMAIN}/api/placement/delete/${id}`,{
             method:"delete"
         });
 
         let res = await response.json();
+        setIsLoading(false);
+        setMessage(res.message);
         if(res.success){
             history.push('/placement/home');
         }
     }
+
+    let btnContent = isLoading? <Loader />: "Delete";
 
     let modalContent = (
         <React.Fragment>
@@ -140,8 +148,9 @@ const index = ({id,auth,history}) => {
                         width:100, 
                         height: 45, 
                         fontSize: 18}} > 
-                            Submit
+                            {btnContent}
                     </ButtonSolid>
+                    <p className="apiMessage">{message}</p>
                 </form>
             </div>
         </React.Fragment>

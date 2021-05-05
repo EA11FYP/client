@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import ButtonSolid from '../../components/UI/button/solid';
+import Loader from '../../components/UI/loader/Loader';
 import * as actions from '../../redux/actions';
 
 import './Styling.css';
@@ -12,7 +13,9 @@ class Mentee extends Component {
     state = {
         username: "",
         password: "",
-        name: ""
+        name: "",
+        isLoading: false,
+        message: ""
     };
 
     inputChangeHandler = (event, type) => {
@@ -32,6 +35,7 @@ class Mentee extends Component {
 
     formSubmitHandler = async (event) => {
         event.preventDefault();
+        this.setState({isLoading:true});
         let body = {
             username: this.state.username,
             password: this.state.password,
@@ -45,8 +49,9 @@ class Mentee extends Component {
             method: 'post',
             body: JSON.stringify(body)
         });
-
+        this.setState({isLoading:false});
         const data = await res.json();
+        this.setState({message:data.message});
         if(data.success){
             this.props.LoginUser(data.info);
             this.props.UserType("mentee");
@@ -56,7 +61,7 @@ class Mentee extends Component {
     }
 
     render() {
-        //console.log(this.state);
+        let btnContent = this.state.isLoading? <Loader /> : "Sign Up";
         return (
            <React.Fragment>
                 <div className="signup-form-layout">
@@ -95,9 +100,10 @@ class Mentee extends Component {
                                 width:100, 
                                 height: 45, 
                                 fontSize: 18}} > 
-                                    Sign Up 
+                                    {btnContent}
                                 </ButtonSolid>
                             </div>
+                            <p className="apiMessage">{this.state.message}</p>
                         </form>
                     </div>
                 </div>

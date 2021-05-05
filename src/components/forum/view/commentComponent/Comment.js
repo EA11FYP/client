@@ -3,19 +3,22 @@ import { connect } from 'react-redux';
 import * as actions from '../../../../redux/actions';
 
 import ButtonSolid from '../../../UI/button/solid/index';
+import Loader from '../../../UI/loader/Loader';
 
 import './Comment.css';
 
 const Comment = ({comments=[], id, auth, userType, fetchPost,LoginUser}) => {
 
     let [ comment, setComment ] = useState('');
+    let [ isLoading, setIsLoading ] = useState(false);
+    let [ message, setMessage ] = useState();
 
     // let cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)username\s*\=\s*([^;]*).*$)|^.*$/, "$1");
 
     let commentSubmitHandler = async event => {
         event.preventDefault();
-        console.log(userType, "hi")
-
+        // console.log(userType, "hi")
+        setIsLoading(true);
         let data = JSON.stringify({
             body: comment,
             authorId: auth._id,
@@ -33,6 +36,8 @@ const Comment = ({comments=[], id, auth, userType, fetchPost,LoginUser}) => {
         );
 
         let res = await response.json();
+        setIsLoading(false);
+        setMessage(res.message);
         if(res.success){
             setComment('');
             LoginUser(res.userInfo);
@@ -43,6 +48,7 @@ const Comment = ({comments=[], id, auth, userType, fetchPost,LoginUser}) => {
     }
 
     let username;
+    let btnContent = isLoading? <Loader />: "Submit";
     return (
         <div className="forumView-comments">
             <p className="forumView-comments-title">Comments</p>
@@ -79,9 +85,10 @@ const Comment = ({comments=[], id, auth, userType, fetchPost,LoginUser}) => {
                         width:100, 
                         height: 45, 
                         fontSize: 18}} > 
-                            Submit
+                            {btnContent}
                         </ButtonSolid>
                     </div>
+                    <p className="apiMessage">{message}</p>
                 </form>
             </div>}
         </div>
