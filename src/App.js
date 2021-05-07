@@ -20,6 +20,7 @@ import MentorRequests from './pages/mentor/request';
 import MentorProfile from './pages/mentor/profile';
 
 import MenteeNotification from './pages/mentee/notifications';
+import MenteeProfile from './pages/mentee/profile';
 
 import PlacementHome from './pages/placement/homepage';
 import PlacementView from './pages/placement/view';
@@ -47,6 +48,7 @@ class App extends Component {
             <Route path="/mentor/requests" exact><MentorRequests  /></Route>
             <Route path="/mentor/view-profile/:id" exact><MentorProfile /></Route>
             <Route path="/mentee/notification" exact><MenteeNotification  /></Route>
+            <Route path="/mentee/view-profile/:id" exact><MenteeProfile /></Route>
             <Route path="/placement/home" exact><PlacementHome /></Route>
             <Route path="/placement/view/:id" exact><PlacementView /></Route>
             <Route path="/placement/new" exact><NewPlacement /></Route>

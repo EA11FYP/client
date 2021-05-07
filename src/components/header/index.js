@@ -63,7 +63,7 @@ const index = (props) => {
         conditionalContent = (
             <React.Fragment>
                 <NavItem >
-                    <NavbarBrand className="header-welcome-text" >Welcome <a href={`/mentor/view-profile/${props.auth._id}`}>{props.auth.name}</a></NavbarBrand>
+                    <NavbarBrand className="header-welcome-text" >Welcome <a href={`/${props.userType}/view-profile/${props.auth._id}`}>{props.auth.name}</a></NavbarBrand>
                 </NavItem>
                  <NavItem className="header-logout-btn">
                     <ButtonSolid clicked={logoutHandler} style={{width:133, height:40}}>{logoutBtnContent}</ButtonSolid>
