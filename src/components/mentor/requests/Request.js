@@ -99,7 +99,10 @@ const Request = ({auth}) => {
                                 Decline
                             </ButtonSolid>
                             <p></p>
-                            <p className="request-message">{item.requestMessage}</p>
+                            <p className="request-message">
+                                {item.requestMessage}<br/>
+                                <a href={`/mentee/view-profile/${item.from}`}>View Profile</a>
+                            </p>
                             <hr/>
                         </React.Fragment>
                     ))
