@@ -134,6 +134,12 @@ const Profile = ({auth, userType, menteeId}) => {
                                 <div className="menteeProfile-mentorList-layout col-lg-3">
                                     <p><b>Name: </b>{item.name}</p>
                                     <p><b>Domain: </b>{item.domain}</p>
+                                  { auth._id === menteeId &&
+                                    <React.Fragment>
+                                       <a href={`tel:${item.phone}`}>Call</a>
+                                       <a href={`mailto:${item.email}`} style={{marginLeft:5}}>Email</a> <br/>
+                                    </React.Fragment> 
+                                  }
                                     <a href={`/mentor/view-profile/${item._id}`}>View Profile</a>
                                 </div>
                             </React.Fragment>
