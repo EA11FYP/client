@@ -7,6 +7,7 @@ import './Profile.css';
 const Profile = ({auth, userType, menteeId}) => {
 
     let [ menteeDetails, setMenteeDetails ] = useState({});
+    let [ mentorList, setMentorList ] = useState([]);
 
     let fetchmenteeDetails = async () => {
         let response = await fetch(`${process.env.REACT_APP_DOMAIN}/api/mentee/${menteeId}`,{
@@ -17,19 +18,23 @@ const Profile = ({auth, userType, menteeId}) => {
         if(res.success){
             setMenteeDetails(res.info);
         }
-        
     }
 
     useEffect(() => {
         fetchmenteeDetails();
     },[]);
 
+    useEffect(() => {
+        setMentorList(menteeDetails.mentors);
+    },[menteeDetails]);
+
+    console.log(menteeDetails.mentors)
 
     return (
-        <div className="mentorProfile">
-            <p className="mentorProfile-name">{menteeDetails.name}</p>
-            <div className="mentorProfile-layout">
-                <table className="mentorProfile-table">
+        <div className="menteeProfile">
+            <p className="menteeProfile-name">{menteeDetails.name}</p>
+            <div className="menteeProfile-layout">
+                <table className="menteeProfile-table">
                     <tr>
                         <td>
                            <b> Name:</b> 
@@ -67,7 +72,7 @@ const Profile = ({auth, userType, menteeId}) => {
                             <b>Website:</b> 
                         </td>
                         <td>
-                            <a className="mentorProfile-link" href={menteeDetails.website}>{menteeDetails.website}</a>
+                            <a className="menteeProfile-link" href={menteeDetails.website}>{menteeDetails.website}</a>
                         </td>
                     </tr>
                     <tr>
@@ -75,7 +80,7 @@ const Profile = ({auth, userType, menteeId}) => {
                             <b>Linkedin: </b>
                         </td>
                         <td>
-                            <a className="mentorProfile-link" href={menteeDetails.linkedin}>{menteeDetails.linkedin}</a>
+                            <a className="menteeProfile-link" href={menteeDetails.linkedin}>{menteeDetails.linkedin}</a>
                         </td>
                     </tr>
                     <tr>
@@ -119,6 +124,22 @@ const Profile = ({auth, userType, menteeId}) => {
                         </td>
                     </tr>
                 </table>
+            </div>
+            <p className="menteeProfile-mentorList-title">Mentors</p>
+            <div className="menteeProfile-mentorList">
+                <div className="row">
+                    {   mentorList &&
+                        mentorList.map(item => (
+                            <React.Fragment>
+                                <div className="menteeProfile-mentorList-layout col-lg-3">
+                                    <p><b>Name: </b>{item.name}</p>
+                                    <p><b>Domain: </b>{item.domain}</p>
+                                    <a href={`/mentor/view-profile/${item._id}`}>View Profile</a>
+                                </div>
+                            </React.Fragment>
+                        ))
+                    }
+                </div>
             </div>
         </div>
     );
