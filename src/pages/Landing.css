@@ -1,0 +1,12 @@
+.landing {
+  margin-top: 45px;
+}
+
+.landing-chatbot {
+  border: 1px solid black;
+  border-radius: 12px;
+  padding: 20px;
+  background-color: white;
+  width: 300px;
+  text-align: center;
+}
