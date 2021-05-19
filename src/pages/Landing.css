@@ -1,5 +1,6 @@
 .landing {
   margin-top: 45px;
+  text-align: center;
 }
 
 .landing-chatbot {
@@ -9,4 +10,5 @@
   background-color: white;
   width: 300px;
   text-align: center;
+  margin: 1px auto;
 }
