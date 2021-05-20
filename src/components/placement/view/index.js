@@ -121,7 +121,7 @@ const index = ({ id, auth, history }) => {
             required
             value={updatedTitle}
             onChange={(e) => setUpdatedTitle(e.target.value)}
-          />{" "}
+          />
           <br />
           <label className="forumView-edit-label">Domain</label> <br />
           <input
@@ -129,7 +129,7 @@ const index = ({ id, auth, history }) => {
             required
             value={updatedDomain}
             onChange={(e) => setUpdatedDomain(e.target.value)}
-          />{" "}
+          />
           <br />
           <label className="forumView-edit-label">CTC</label> <br />
           <input
@@ -138,7 +138,7 @@ const index = ({ id, auth, history }) => {
             type="number"
             value={updatedCtc}
             onChange={(e) => setUpdatedCtc(e.target.value)}
-          />{" "}
+          />
           <br />
           {/* 
                     <label className="forumView-edit-label">Type</label> <br/>
@@ -161,7 +161,7 @@ const index = ({ id, auth, history }) => {
             onChange={(e) => setUpdatedBody(e.target.value)}
           >
             {updatedBody}
-          </textarea>{" "}
+          </textarea>
           <br />
           <ButtonSolid
             type="submit"
