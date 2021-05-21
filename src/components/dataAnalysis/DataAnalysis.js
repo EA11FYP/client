@@ -3,9 +3,10 @@ import React, { useRef, useEffect } from "react";
 import "./DataAnalysis.css";
 
 const { tableau } = window;
-const DataAnalysis = () => {
+const DataAnalysis = (props) => {
   const ref = useRef(null);
-  const url = "https://public.tableau.com/views/SIH7/Dashboard1";
+  // const url = "https://public.tableau.com/views/SIH7/Dashboard1";
+  const url = props.url;
 
   const options = {
     device: "desktop",
@@ -20,7 +21,7 @@ const DataAnalysis = () => {
   }, []);
   return (
     <React.Fragment>
-      <p>National Analysis of Startups</p>
+      <p>{props.title}</p>
       <div className="dataAnalysis-div" ref={ref}></div>
     </React.Fragment>
   );
